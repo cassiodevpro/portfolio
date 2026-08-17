@@ -1,0 +1,468 @@
+<title>Cássio Moreira — Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#F1EDE4;
+    --paper-raised:#E7E0D0;
+    --ink:#1C222B;
+    --ink-soft:#565F70;
+    --blue:#2E5FC7;
+    --orange:#BC5122;
+    --green:#4B6B45;
+    --line:rgba(28,34,43,0.18);
+    --line-strong:rgba(28,34,43,0.38);
+    --display:'Big Shoulders Display', 'Arial Narrow', sans-serif;
+    --body:'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --mono:'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#13161C;
+      --paper-raised:#1A1E26;
+      --ink:#ECE8DD;
+      --ink-soft:#9FA6B5;
+      --blue:#729AFE;
+      --orange:#E17E45;
+      --green:#8AAE7C;
+      --line:rgba(236,232,221,0.16);
+      --line-strong:rgba(236,232,221,0.34);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#13161C;
+    --paper-raised:#1A1E26;
+    --ink:#ECE8DD;
+    --ink-soft:#9FA6B5;
+    --blue:#729AFE;
+    --orange:#E17E45;
+    --green:#8AAE7C;
+    --line:rgba(236,232,221,0.16);
+    --line-strong:rgba(236,232,221,0.34);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow .idx{color:var(--blue);}
+  h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;}
+
+  /* ---------- Header rule ---------- */
+  .ruler{
+    border-top:1px solid var(--line-strong);
+    border-bottom:1px solid var(--line);
+  }
+  .ruler .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:14px;padding-bottom:14px;
+    font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;
+    color:var(--ink-soft);text-transform:uppercase;
+  }
+  .avail{display:flex;align-items:center;gap:8px;}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px color-mix(in srgb, var(--green) 22%, transparent);}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:64px 0 48px;border-bottom:1px solid var(--line-strong);}
+  .hero h1{
+    font-size:clamp(2.6rem, 7.2vw, 5.6rem);
+    font-weight:800;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    line-height:0.94;
+  }
+  .hero .role{
+    margin-top:18px;
+    font-size:clamp(1rem,2vw,1.25rem);
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+  .hero .role b{color:var(--ink);font-weight:600;}
+  .contact-row{
+    margin-top:32px;
+    display:flex;flex-wrap:wrap;gap:10px 14px;
+    font-family:var(--mono);font-size:0.78rem;
+  }
+  .contact-row a, .contact-row span{
+    border:1px solid var(--line-strong);
+    padding:7px 12px;
+    display:inline-flex;align-items:center;gap:7px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .contact-row a:hover{border-color:var(--blue);color:var(--blue);}
+
+  /* ---------- Section shell ---------- */
+  section{padding:56px 0;border-bottom:1px solid var(--line);}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:34px;flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);text-transform:uppercase;letter-spacing:-0.01em;}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid;grid-template-columns:200px 1fr;gap:32px;}
+  .about-grid p{max-width:64ch;color:var(--ink);}
+  .about-grid p + p{margin-top:14px;color:var(--ink-soft);}
+
+  /* ---------- Skill strata ---------- */
+  .strata{border-top:1px solid var(--line-strong);}
+  .stratum{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:24px;
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .stratum:nth-child(odd){background:linear-gradient(90deg, transparent, transparent);}
+  .stratum-label{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);padding-top:4px;}
+  .stratum-label b{display:block;font-family:var(--display);font-size:1.5rem;color:var(--ink);text-transform:uppercase;font-weight:700;letter-spacing:0;margin-top:2px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-family:var(--mono);font-size:0.76rem;
+    border:1px solid var(--line-strong);
+    padding:6px 11px;color:var(--ink-soft);
+  }
+
+  /* ---------- Experience ---------- */
+  .job{
+    border-left:3px solid var(--blue);
+    padding-left:24px;
+  }
+  .job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+  .job-head h3{font-size:1.5rem;text-transform:uppercase;}
+  .job-head .period{font-family:var(--mono);font-size:0.78rem;color:var(--ink-soft);white-space:nowrap;}
+  .job-company{color:var(--orange);font-weight:600;margin-top:2px;}
+  .job ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .job li{position:relative;padding-left:18px;color:var(--ink-soft);}
+  .job li::before{content:"▪";position:absolute;left:0;color:var(--blue);}
+
+  /* ---------- Projects ---------- */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);}
+  .proj{background:var(--paper);padding:26px;display:flex;flex-direction:column;gap:14px;}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .proj-top h3{font-size:1.5rem;text-transform:uppercase;line-height:1.05;}
+  .proj-domain{font-family:var(--mono);font-size:0.7rem;color:var(--ink-soft);letter-spacing:0.02em;word-break:break-all;}
+  .proj p.desc{color:var(--ink-soft);font-size:0.95rem;flex:1;}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .tag{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.03em;text-transform:uppercase;color:var(--blue);border:1px solid color-mix(in srgb, var(--blue) 40%, transparent);padding:3px 8px;}
+  .visit{
+    align-self:flex-start;
+    font-family:var(--mono);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;
+    color:var(--ink);text-decoration:none;
+    border-bottom:1px solid var(--orange);
+    padding-bottom:2px;
+    display:inline-flex;align-items:center;gap:6px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .visit:hover{color:var(--orange);}
+  .visit svg{width:12px;height:12px;transition:transform .15s ease;}
+  .visit:hover svg{transform:translate(2px,-2px);}
+
+  /* ---------- Other projects (list) ---------- */
+  .other-list{border-top:1px solid var(--line-strong);}
+  .other-item{
+    display:grid;grid-template-columns:1fr 2.2fr;gap:20px;
+    padding:18px 0;border-bottom:1px solid var(--line);
+  }
+  .other-item h4{font-family:var(--display);font-size:1.15rem;text-transform:uppercase;font-weight:700;letter-spacing:0;}
+  .other-item p{margin:4px 0 0;color:var(--ink-soft);font-size:0.92rem;max-width:56ch;}
+
+  /* ---------- Education ---------- */
+  .edu-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;}
+  .degree{border:1px solid var(--line-strong);padding:22px;}
+  .degree .school{font-family:var(--mono);font-size:0.78rem;color:var(--orange);text-transform:uppercase;letter-spacing:0.05em;}
+  .degree h3{margin-top:8px;font-size:1.4rem;text-transform:uppercase;}
+  .degree .period{margin-top:10px;font-family:var(--mono);font-size:0.75rem;color:var(--ink-soft);}
+  .course-list{display:flex;flex-direction:column;}
+  .course{
+    display:flex;justify-content:space-between;gap:14px;
+    padding:11px 0;border-bottom:1px solid var(--line);
+    font-size:0.92rem;
+  }
+  .course span:last-child{font-family:var(--mono);font-size:0.75rem;color:var(--ink-soft);white-space:nowrap;}
+
+  /* ---------- Footer ---------- */
+  footer{padding:48px 0 60px;}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;align-items:flex-end;}
+  .foot-grid h2{font-size:clamp(1.8rem,4vw,2.6rem);text-transform:uppercase;}
+  .foot-links{display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:0.82rem;}
+  .foot-links a{text-decoration:none;border-bottom:1px solid transparent;}
+  .foot-links a:hover{color:var(--blue);border-color:var(--blue);}
+  .fine{margin-top:40px;font-family:var(--mono);font-size:0.7rem;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:760px){
+    .about-grid, .edu-grid, .stratum, .other-item{grid-template-columns:1fr;}
+    .proj-grid{grid-template-columns:1fr;}
+    .job-head{flex-direction:column;align-items:flex-start;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+
+<div class="ruler">
+  <div class="wrap">
+    <span>Sobradinho · DF · Brasil</span>
+    <span class="avail"><span class="dot"></span>Disponível — remoto / híbrido / presencial</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="idx">000</span> Portfólio técnico</div>
+    <h1>Cássio<br>Moreira&nbsp;de&nbsp;Souza</h1>
+    <p class="role">Desenvolvedor Full Stack — <b>Angular</b> · <b>React/Next.js</b> · <b>Java &amp; Spring Boot</b> · <b>PHP (Yii2)</b> · <b>PostgreSQL</b></p>
+    <div class="contact-row">
+      <a href="mailto:cassiodevpro@gmail.com">cassiodevpro@gmail.com</a>
+      <span>(61) 99214-6651</span>
+      <a href="https://linkedin.com/in/cassio-dev-pro" target="_blank" rel="noopener">linkedin.com/in/cassio-dev-pro</a>
+      <a href="https://github.com/cassiodevpro" target="_blank" rel="noopener">github.com/cassiodevpro</a>
+    </div>
+  </div>
+</header>
+
+<section id="sobre">
+  <div class="wrap about-grid">
+    <div class="eyebrow"><span class="idx">001</span> Sobre</div>
+    <div>
+      <p>Desenvolvedor Full Stack com cerca de 2 anos de experiência construindo e mantendo aplicações web em Angular, React, Next.js, PHP (Yii2) e PostgreSQL. Atuo em times ágeis com Scrum — inclusive como apoio de Trainee Scrum Master — integrando APIs REST e entregando interfaces modernas e responsivas.</p>
+      <p>Perfil colaborativo e de aprendizado rápido, hoje ampliando experiência com Java e Spring Boot em busca de posições como Desenvolvedor Full Stack ou Backend Java, contribuindo com soluções escaláveis e de alta qualidade.</p>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="idx">002</span> Stack</div>
+        <h2>Camadas de trabalho</h2>
+      </div>
+    </div>
+    <div class="strata">
+      <div class="stratum">
+        <div class="stratum-label">Camada 01<b>Frontend</b></div>
+        <div class="chips">
+          <span class="chip">Angular 15</span><span class="chip">React</span><span class="chip">Next.js</span>
+          <span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Tailwind CSS</span>
+          <span class="chip">Angular Material</span><span class="chip">Bootstrap</span>
+        </div>
+      </div>
+      <div class="stratum">
+        <div class="stratum-label">Camada 02<b>Backend</b></div>
+        <div class="chips">
+          <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">PHP · Yii2</span>
+          <span class="chip">APIs REST</span>
+        </div>
+      </div>
+      <div class="stratum">
+        <div class="stratum-label">Camada 03<b>Dados</b></div>
+        <div class="chips">
+          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span>
+        </div>
+      </div>
+      <div class="stratum">
+        <div class="stratum-label">Camada 04<b>Infra &amp; Fluxo</b></div>
+        <div class="chips">
+          <span class="chip">Git / GitHub</span><span class="chip">Vercel</span><span class="chip">Railway</span>
+          <span class="chip">Firebase</span><span class="chip">Jira</span><span class="chip">Monday</span>
+          <span class="chip">Postman</span><span class="chip">Scrum</span><span class="chip">Kanban</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="idx">003</span> Experiência</div>
+        <h2>Trajetória profissional</h2>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-head">
+        <div>
+          <h3>Desenvolvedor Full Stack</h3>
+          <div class="job-company">UITEC — Ui Tecnologia Desenvolvimento de Programas LTDA</div>
+        </div>
+        <div class="period">Set/2024 — Jul/2026</div>
+      </div>
+      <ul>
+        <li>Desenvolvimento e manutenção de funcionalidades frontend e backend em aplicações web com Angular 15, React/Next.js e PHP (Yii2).</li>
+        <li>Manutenção evolutiva de sistemas legados, com correção de bugs e melhoria contínua de funcionalidades.</li>
+        <li>Implementação de integrações com APIs REST, garantindo comunicação eficiente entre frontend e backend.</li>
+        <li>Manipulação e consultas em banco de dados PostgreSQL para suporte às funcionalidades da aplicação.</li>
+        <li>Componentes reutilizáveis seguindo boas práticas de frontend (Tailwind CSS, Angular Material, Bootstrap).</li>
+        <li>Participação ativa em cerimônias Scrum e apoio ao Scrum Master na organização das sprints (Trainee Scrum Master).</li>
+        <li>Colaboração entre equipes de frontend e backend, com versionamento via Git/GitHub e code review.</li>
+        <li>Gestão de tarefas com Jira e Monday, em ambiente ágil com Scrum e Kanban.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="idx">004</span> Projetos em produção</div>
+        <h2>No ar agora</h2>
+      </div>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj">
+        <div class="proj-top">
+          <div>
+            <h3>Só Jesus Salva</h3>
+            <div class="proj-domain">adssojesussalva.web.app</div>
+          </div>
+        </div>
+        <p class="desc">Site institucional para uma comunidade religiosa evangélica, apresentando a identidade da igreja, mensagens e informações de contato para os membros. Publicado no Firebase Hosting.</p>
+        <div class="proj-tags"><span class="tag">Frontend Web</span><span class="tag">Firebase Hosting</span></div>
+        <a class="visit" href="https://adssojesussalva.web.app/" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div>
+            <h3>Banho &amp; Tosa Adaca</h3>
+            <div class="proj-domain">danilo-pet.vercel.app</div>
+          </div>
+        </div>
+        <p class="desc">Site para um negócio de banho e tosa, apresentando os serviços do pet shop de forma direta para clientes que buscam agendar cuidados para seus animais.</p>
+        <div class="proj-tags"><span class="tag">React / Next.js</span><span class="tag">Vercel</span></div>
+        <a class="visit" href="https://danilo-pet.vercel.app" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div>
+            <h3>Facilito Smart</h3>
+            <div class="proj-domain">projetoleo.vercel.app</div>
+          </div>
+        </div>
+        <p class="desc">Hub institucional para um ecossistema de automação varejista: lojas autônomas 24h, quiosques self-service, sistemas de PDV/ERP, suporte técnico e mídia indoor — um projeto de maior porte com múltiplas frentes de conteúdo em uma única aplicação.</p>
+        <div class="proj-tags"><span class="tag">React / Next.js</span><span class="tag">Vercel</span></div>
+        <a class="visit" href="https://projetoleo.vercel.app" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div>
+            <h3>Hiragana Pro</h3>
+            <div class="proj-domain">projeto-japao.vercel.app</div>
+          </div>
+        </div>
+        <p class="desc">Guia visual bilíngue (PT/JP) para aprender Hiragana, Katakana, Kanji e numerais japoneses, organizado em seções navegáveis por abas com rotas próprias para cada conjunto de caracteres.</p>
+        <div class="proj-tags"><span class="tag">React / Next.js</span><span class="tag">Vercel</span></div>
+        <a class="visit" href="https://projeto-japao.vercel.app/" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div>
+            <h3>Convite de Aniversário</h3>
+            <div class="proj-domain">convite-aniversario-ebon-three.vercel.app</div>
+          </div>
+        </div>
+        <p class="desc">Convite digital personalizado para festa de aniversário infantil, com contagem regressiva até o evento, confirmação de presença via WhatsApp e seção de sugestões de presente.</p>
+        <div class="proj-tags"><span class="tag">Next.js</span><span class="tag">WhatsApp API</span><span class="tag">Vercel</span></div>
+        <a class="visit" href="https://convite-aniversario-ebon-three.vercel.app/" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+
+    </div>
+
+    <div class="other-list">
+      <div class="other-item">
+        <h4>Sistema de Integração (TCC)</h4>
+        <p>Aplicação de gerenciamento de usuários com frontend em Angular 15, backend em Spring Boot e banco de dados MySQL. CRUD completo, autenticação e dashboard interativo, estilizado com Angular Material.</p>
+      </div>
+      <div class="other-item">
+        <h4>Plataforma de Psicologia</h4>
+        <p>Plataforma web com Angular, Next.js e PHP (Yii2), integrando um frontend moderno a um backend legado.</p>
+      </div>
+      <div class="other-item">
+        <h4>Sistema de Agendamento Inteligente</h4>
+        <p>Projeto pessoal de agendamento de serviços com controle de conflitos de horários e API própria.</p>
+      </div>
+      <div class="other-item">
+        <h4>Sistema de Currículos e APIs REST</h4>
+        <p>APIs REST e sistema de autenticação para gestão de currículos e dados de usuários.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="formacao">
+  <div class="wrap edu-grid">
+    <div>
+      <div class="eyebrow"><span class="idx">005</span> Formação</div>
+      <div class="degree" style="margin-top:16px;">
+        <div class="school">Projeção — Brasília, DF</div>
+        <h3>Bacharelado em Sistemas de Informação</h3>
+        <div class="period">2020 — 2024</div>
+      </div>
+      <div class="degree" style="margin-top:16px;">
+        <div class="school">Idioma</div>
+        <h3 style="font-size:1.15rem;">Inglês — Intermediário (B1)</h3>
+        <div class="period">Leitura técnica e conversação básica</div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow"><span class="idx">006</span> Cursos complementares</div>
+      <div class="course-list" style="margin-top:16px;">
+        <div class="course"><span>Angular Web Development</span><span>Udemy · 2024</span></div>
+        <div class="course"><span>Angular Avançado com Projeto Real</span><span>Udemy · 2025</span></div>
+        <div class="course"><span>React + Next.js</span><span>Udemy · 2025</span></div>
+        <div class="course"><span>Java com Spring Boot</span><span>Udemy · 2024</span></div>
+        <div class="course"><span>Banco de Dados Relacional com SQL</span><span>Udemy · 2025</span></div>
+        <div class="course"><span>Versionamento com Git e GitHub</span><span>DIO · 2024</span></div>
+        <div class="course"><span>Fundamentos de Atendimento e Tecnologia</span><span>IBM SkillsBuild · 2024</span></div>
+        <div class="course"><span>Lógica de Programação, Java, BD, Spring, HTML+Bootstrap, JS</span><span>SENAI/DF</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <h2>Vamos<br>conversar?</h2>
+      <div class="foot-links">
+        <a href="mailto:cassiodevpro@gmail.com">cassiodevpro@gmail.com</a>
+        <a href="https://linkedin.com/in/cassio-dev-pro" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/cassiodevpro" target="_blank" rel="noopener">GitHub ↗</a>
+        <span>(61) 99214-6651</span>
+      </div>
+    </div>
+    <div class="fine">
+      <span>Cássio Moreira de Souza — Sobradinho, DF, Brasil</span>
+      <span>Disponível para remoto, híbrido ou presencial em Brasília-DF</span>
+    </div>
+  </div>
+</footer>
