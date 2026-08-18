@@ -163,6 +163,8 @@
   .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
   .proj-top h3{font-size:1.5rem;text-transform:uppercase;line-height:1.05;}
   .proj-domain{font-family:var(--mono);font-size:0.7rem;color:var(--ink-soft);letter-spacing:0.02em;word-break:break-all;}
+  .proj-status{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:6px;}
+  .proj-status::before{content:"";width:6px;height:6px;background:var(--orange);display:inline-block;}
   .proj p.desc{color:var(--ink-soft);font-size:0.95rem;flex:1;}
   .proj-tags{display:flex;flex-wrap:wrap;gap:6px;}
   .tag{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.03em;text-transform:uppercase;color:var(--blue);border:1px solid color-mix(in srgb, var(--blue) 40%, transparent);padding:3px 8px;}
@@ -354,8 +356,9 @@
             <div class="proj-domain">danilo-pet.vercel.app</div>
           </div>
         </div>
-        <p class="desc">Site para um negócio de banho e tosa, apresentando os serviços do pet shop de forma direta para clientes que buscam agendar cuidados para seus animais.</p>
-        <div class="proj-tags"><span class="tag">React / Next.js</span><span class="tag">Vercel</span></div>
+        <div class="proj-status">Em construção — deploy final via VPS</div>
+        <p class="desc">Site para um negócio de banho e tosa, apresentando os serviços do pet shop de forma direta para clientes que buscam agendar cuidados para seus animais. O frontend está publicado aqui na Vercel apenas para ambiente de desenvolvimento; o backend já roda em uma VPS própria, com Java e PostgreSQL containerizados via Docker. Em produção, frontend e backend serão servidos integralmente pela VPS, junto ao domínio definitivo.</p>
+        <div class="proj-tags"><span class="tag">React / Next.js</span><span class="tag">Java</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">VPS</span><span class="tag">Vercel · Dev</span></div>
         <a class="visit" href="https://danilo-pet.vercel.app" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
       </div>
 
