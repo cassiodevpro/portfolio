@@ -85,6 +85,11 @@
 
   /* ---------- Hero ---------- */
   .hero{padding:64px 0 48px;border-bottom:1px solid var(--line-strong);}
+  .hero-grid{display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:end;}
+  .hero-photo{display:flex;flex-direction:column;}
+  .photo-mat{border:1px solid var(--line-strong);padding:9px;background:var(--paper-raised);}
+  .photo-mat img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:78% 22%;border:1px solid var(--line);}
+  .photo-cap{margin-top:10px;font-family:var(--mono);font-size:0.66rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);text-align:center;}
   .hero h1{
     font-size:clamp(2.6rem, 7.2vw, 5.6rem);
     font-weight:800;
@@ -217,6 +222,8 @@
     .about-grid, .edu-grid, .stratum, .other-item{grid-template-columns:1fr;}
     .proj-grid{grid-template-columns:1fr;}
     .job-head{flex-direction:column;align-items:flex-start;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-photo{order:-1;width:160px;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -232,15 +239,23 @@
 </div>
 
 <header class="hero">
-  <div class="wrap">
-    <div class="eyebrow"><span class="idx">000</span> Portfólio técnico</div>
-    <h1>Cássio<br>Moreira&nbsp;de&nbsp;Souza</h1>
-    <p class="role">Desenvolvedor Full Stack — <b>Angular</b> · <b>React/Next.js</b> · <b>Java &amp; Spring Boot</b> · <b>PHP (Yii2)</b> · <b>PostgreSQL</b></p>
-    <div class="contact-row">
-      <a href="mailto:cassiodevpro@gmail.com">cassiodevpro@gmail.com</a>
-      <span>(61) 99214-6651</span>
-      <a href="https://linkedin.com/in/cassio-dev-pro" target="_blank" rel="noopener">linkedin.com/in/cassio-dev-pro</a>
-      <a href="https://github.com/cassiodevpro" target="_blank" rel="noopener">github.com/cassiodevpro</a>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="idx">000</span> Portfólio técnico</div>
+      <h1>Cássio<br>Moreira&nbsp;de&nbsp;Souza</h1>
+      <p class="role">Desenvolvedor Full Stack — <b>Angular</b> · <b>React/Next.js</b> · <b>Java &amp; Spring Boot</b> · <b>PHP (Yii2)</b> · <b>PostgreSQL</b></p>
+      <div class="contact-row">
+        <a href="mailto:cassiodevpro@gmail.com">cassiodevpro@gmail.com</a>
+        <span>(61) 99214-6651</span>
+        <a href="https://linkedin.com/in/cassio-dev-pro" target="_blank" rel="noopener">linkedin.com/in/cassio-dev-pro</a>
+        <a href="https://github.com/cassiodevpro" target="_blank" rel="noopener">github.com/cassiodevpro</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-mat">
+        <img src="cassio-moreira.jpg" alt="Cássio Moreira de Souza">
+      </div>
+      <div class="photo-cap">Bacharel em Sistemas de Informação — 2024</div>
     </div>
   </div>
 </header>
