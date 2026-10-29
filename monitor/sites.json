@@ -1,0 +1,12 @@
+[
+  { "id": "agente-financeiro", "name": "Agente Cassio Dev Pro (web)", "url": "https://agente-cassiodevpro.vercel.app" },
+  { "id": "agente-financeiro-api", "name": "Agente Cassio Dev Pro (API)", "url": "https://129-121-55-185.sslip.io:8447/actuator/health" },
+  { "id": "agente-financeiro-docs", "name": "Agente Cassio Dev Pro (docs)", "url": "https://dev-cassiodevpro.vercel.app" },
+  { "id": "global-admin-docs", "name": "Global Admin (docs)", "url": "https://doc-global-cont.vercel.app" },
+  { "id": "pet-adaca", "name": "Banho & Tosa Adaca", "url": "https://danilo-pet.vercel.app" },
+  { "id": "job-hunter", "name": "Job Hunter Agent", "url": "https://frontend-two-pi-41.vercel.app" },
+  { "id": "sojesussalva", "name": "Só Jesus Salva", "url": "https://adssojesussalva-b03fa.web.app" },
+  { "id": "facilito", "name": "Facilito Smart", "url": "https://projetoleo.vercel.app" },
+  { "id": "hiragana", "name": "Hiragana Pro", "url": "https://projeto-japao.vercel.app" },
+  { "id": "convite", "name": "Convite de Aniversário", "url": "https://convite-aniversario-ebon-three.vercel.app" }
+]

@@ -1,0 +1,52 @@
+name: Monitor dos sites
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Verificar sites
+        run: node monitor/check.mjs
+
+      - name: Abrir ou fechar alertas
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create monitor --color B0322B --description "Alerta automático do monitor" 2>/dev/null || true
+          jq -c '.sites[]' status.json | while read -r site; do
+            name=$(jq -r .name <<<"$site"); url=$(jq -r .url <<<"$site"); up=$(jq -r .up <<<"$site")
+            title="Fora do ar: $name"
+            open=$(gh issue list --label monitor --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+            if [ "$up" = "false" ] && [ -z "$open" ]; then
+              gh issue create --label monitor --title "$title" \
+                --body "O monitor não conseguiu acessar $url em $(jq -r .checkedAt status.json). Detalhe: $(jq -c '{code,error}' <<<"$site")"
+            elif [ "$up" = "true" ] && [ -n "$open" ]; then
+              gh issue close "$open" --comment "Voltou ao ar na verificação de $(jq -r .checkedAt status.json)."
+            fi
+          done
+
+      - name: Publicar status
+        run: |
+          git config user.name "monitor-bot"
+          git config user.email "monitor-bot@users.noreply.github.com"
+          git add status.json
+          git diff --cached --quiet || git commit -m "chore(monitor): status dos sites"
+          git push

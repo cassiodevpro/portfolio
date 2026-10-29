@@ -1,0 +1,85 @@
+{
+  "checkedAt": "2026-10-29T13:52:34.836Z",
+  "sites": [
+    {
+      "id": "agente-financeiro",
+      "name": "Agente Cassio Dev Pro (web)",
+      "url": "https://agente-cassiodevpro.vercel.app",
+      "up": true,
+      "code": 200,
+      "ms": 997
+    },
+    {
+      "id": "agente-financeiro-api",
+      "name": "Agente Cassio Dev Pro (API)",
+      "url": "https://129-121-55-185.sslip.io:8447/actuator/health",
+      "up": true,
+      "code": 200,
+      "ms": 573
+    },
+    {
+      "id": "agente-financeiro-docs",
+      "name": "Agente Cassio Dev Pro (docs)",
+      "url": "https://dev-cassiodevpro.vercel.app",
+      "up": true,
+      "code": 200,
+      "ms": 325
+    },
+    {
+      "id": "global-admin-docs",
+      "name": "Global Admin (docs)",
+      "url": "https://doc-global-cont.vercel.app",
+      "up": true,
+      "code": 200,
+      "ms": 319
+    },
+    {
+      "id": "pet-adaca",
+      "name": "Banho & Tosa Adaca",
+      "url": "https://danilo-pet.vercel.app",
+      "up": true,
+      "code": 200,
+      "ms": 323
+    },
+    {
+      "id": "job-hunter",
+      "name": "Job Hunter Agent",
+      "url": "https://frontend-two-pi-41.vercel.app",
+      "up": true,
+      "code": 200,
+      "ms": 1009
+    },
+    {
+      "id": "sojesussalva",
+      "name": "Só Jesus Salva",
+      "url": "https://adssojesussalva-b03fa.web.app",
+      "up": true,
+      "code": 200,
+      "ms": 439
+    },
+    {
+      "id": "facilito",
+      "name": "Facilito Smart",
+      "url": "https://projetoleo.vercel.app",
+      "up": true,
+      "code": 200,
+      "ms": 393
+    },
+    {
+      "id": "hiragana",
+      "name": "Hiragana Pro",
+      "url": "https://projeto-japao.vercel.app",
+      "up": true,
+      "code": 200,
+      "ms": 193
+    },
+    {
+      "id": "convite",
+      "name": "Convite de Aniversário",
+      "url": "https://convite-aniversario-ebon-three.vercel.app",
+      "up": true,
+      "code": 200,
+      "ms": 342
+    }
+  ]
+}

@@ -1,4 +1,13 @@
-<title>Cássio Moreira — Portfólio</title>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cássio Moreira — Full Stack</title>
+<meta name="description" content="Cássio Moreira de Souza — Desenvolvedor Full Stack Java/Spring Boot, React/Next.js e Angular, com IA aplicada em produção.">
+<meta property="og:title" content="Cássio Moreira — Desenvolvedor Full Stack Java · React · Angular">
+<meta property="og:description" content="Sistemas em produção com Spring Boot, Next.js, Angular, PostgreSQL, Docker e IA (LLMs) integrada.">
+<meta property="og:image" content="cassio-moreira.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -11,149 +20,159 @@
     --ink-soft:#565F70;
     --blue:#2E5FC7;
     --orange:#BC5122;
-    --green:#4B6B45;
+    --green:#3F6B3A;
+    --red:#B0322B;
     --line:rgba(28,34,43,0.18);
     --line-strong:rgba(28,34,43,0.38);
     --display:'Big Shoulders Display', 'Arial Narrow', sans-serif;
     --body:'Archivo', 'Helvetica Neue', Arial, sans-serif;
     --mono:'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   }
-
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --paper:#13161C;
-      --paper-raised:#1A1E26;
-      --ink:#ECE8DD;
-      --ink-soft:#9FA6B5;
-      --blue:#729AFE;
-      --orange:#E17E45;
-      --green:#8AAE7C;
-      --line:rgba(236,232,221,0.16);
-      --line-strong:rgba(236,232,221,0.34);
+      --paper:#13161C;--paper-raised:#1A1E26;--ink:#ECE8DD;--ink-soft:#9FA6B5;
+      --blue:#729AFE;--orange:#E17E45;--green:#8AAE7C;--red:#EE7A70;
+      --line:rgba(236,232,221,0.16);--line-strong:rgba(236,232,221,0.34);
     }
   }
   :root[data-theme="dark"]{
-    --paper:#13161C;
-    --paper-raised:#1A1E26;
-    --ink:#ECE8DD;
-    --ink-soft:#9FA6B5;
-    --blue:#729AFE;
-    --orange:#E17E45;
-    --green:#8AAE7C;
-    --line:rgba(236,232,221,0.16);
-    --line-strong:rgba(236,232,221,0.34);
+    --paper:#13161C;--paper-raised:#1A1E26;--ink:#ECE8DD;--ink-soft:#9FA6B5;
+    --blue:#729AFE;--orange:#E17E45;--green:#8AAE7C;--red:#EE7A70;
+    --line:rgba(236,232,221,0.16);--line-strong:rgba(236,232,221,0.34);
   }
 
   *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--body);
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   a{color:inherit;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
-
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:0.72rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
+  .eyebrow{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:10px;}
   .eyebrow .idx{color:var(--blue);}
-  h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;}
+  h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0;}
 
-  /* ---------- Header rule ---------- */
-  .ruler{
-    border-top:1px solid var(--line-strong);
-    border-bottom:1px solid var(--line);
-  }
-  .ruler .wrap{
-    display:flex;justify-content:space-between;align-items:center;
-    padding-top:14px;padding-bottom:14px;
-    font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;
-    color:var(--ink-soft);text-transform:uppercase;
-  }
-  .avail{display:flex;align-items:center;gap:8px;}
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px color-mix(in srgb, var(--green) 22%, transparent);}
+  /* ---------- Top bar ---------- */
+  .topbar{position:sticky;top:0;z-index:10;background:color-mix(in srgb, var(--paper) 92%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px;}
+  .brand{font-family:var(--display);font-weight:800;font-size:1.15rem;text-transform:uppercase;text-decoration:none;letter-spacing:0.02em;}
+  .nav{display:flex;gap:18px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;}
+  .nav a{text-decoration:none;color:var(--ink-soft);}
+  .nav a:hover{color:var(--blue);}
+  .avail{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px color-mix(in srgb, var(--green) 22%, transparent);flex:none;}
 
   /* ---------- Hero ---------- */
-  .hero{padding:64px 0 48px;border-bottom:1px solid var(--line-strong);}
-  .hero-grid{display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:end;}
-  .hero-photo{display:flex;flex-direction:column;}
-  .photo-mat{border:1px solid var(--line-strong);padding:9px;background:var(--paper-raised);}
-  .photo-mat img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:78% 22%;border:1px solid var(--line);}
-  .photo-cap{margin-top:10px;font-family:var(--mono);font-size:0.66rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);text-align:center;}
-  .hero h1{
-    font-size:clamp(2.6rem, 7.2vw, 5.6rem);
-    font-weight:800;
-    letter-spacing:-0.01em;
-    text-transform:uppercase;
-    line-height:0.94;
-  }
-  .hero .role{
-    margin-top:18px;
-    font-size:clamp(1rem,2vw,1.25rem);
-    color:var(--ink-soft);
-    font-weight:500;
-  }
+  .hero{padding:64px 0 52px;border-bottom:1px solid var(--line-strong);}
+  .hero-grid{display:grid;grid-template-columns:1fr 280px;gap:52px;align-items:center;}
+  .hero h1{font-size:clamp(2.6rem, 7vw, 5.4rem);font-weight:800;letter-spacing:-0.01em;text-transform:uppercase;line-height:0.94;margin-top:14px;}
+  .hero .role{margin-top:20px;font-size:clamp(1.05rem,2vw,1.3rem);color:var(--ink-soft);font-weight:500;max-width:46ch;}
   .hero .role b{color:var(--ink);font-weight:600;}
-  .contact-row{
-    margin-top:32px;
-    display:flex;flex-wrap:wrap;gap:10px 14px;
-    font-family:var(--mono);font-size:0.78rem;
-  }
-  .contact-row a, .contact-row span{
-    border:1px solid var(--line-strong);
-    padding:7px 12px;
-    display:inline-flex;align-items:center;gap:7px;
-    text-decoration:none;
-    color:var(--ink);
-    transition:border-color .15s ease, color .15s ease;
-  }
-  .contact-row a:hover{border-color:var(--blue);color:var(--blue);}
+  .hero-stack{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px;}
+  .hero-stack span{font-family:var(--mono);font-size:0.78rem;font-weight:600;padding:7px 12px;border:1px solid var(--ink);}
+  .hero-stack span.ai{border-color:var(--orange);color:var(--orange);}
+  .cta-row{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px;}
+  .btn{font-family:var(--mono);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;text-decoration:none;padding:11px 16px;border:1px solid var(--ink);display:inline-flex;align-items:center;gap:8px;transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .btn.primary{background:var(--ink);color:var(--paper);}
+  .btn.primary:hover{background:var(--blue);border-color:var(--blue);}
+  .btn:not(.primary):hover{border-color:var(--blue);color:var(--blue);}
+  .btn.accent{background:var(--orange);border-color:var(--orange);color:#fff;}
+  .btn.accent:hover{filter:brightness(1.08);}
+  .contact-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:0.76rem;color:var(--ink-soft);}
+  .contact-row a{text-decoration:none;}
+  .contact-row a:hover{color:var(--blue);}
+  .photo-mat{border:1px solid var(--line-strong);padding:10px;background:var(--paper-raised);}
+  .photo-mat img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 8%;border:1px solid var(--line);}
+  .photo-cap{margin-top:10px;font-family:var(--mono);font-size:0.66rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);text-align:center;}
 
-  /* ---------- Section shell ---------- */
-  section{padding:56px 0;border-bottom:1px solid var(--line);}
+  /* ---------- Metrics ---------- */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line-strong);}
+  .metric{padding:24px 20px;border-right:1px solid var(--line);}
+  .metric:last-child{border-right:0;}
+  .metric b{display:block;font-family:var(--display);font-size:2.4rem;line-height:1;font-weight:800;}
+  .metric span{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);}
+
+  /* ---------- Sections ---------- */
+  section{padding:60px 0;border-bottom:1px solid var(--line);}
   .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:34px;flex-wrap:wrap;}
-  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);text-transform:uppercase;letter-spacing:-0.01em;}
+  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);text-transform:uppercase;letter-spacing:-0.01em;margin-top:6px;}
+  .section-head p{max-width:46ch;color:var(--ink-soft);margin:0;font-size:0.95rem;}
 
-  /* ---------- About ---------- */
   .about-grid{display:grid;grid-template-columns:200px 1fr;gap:32px;}
-  .about-grid p{max-width:64ch;color:var(--ink);}
+  .about-grid p{max-width:66ch;margin:0;}
   .about-grid p + p{margin-top:14px;color:var(--ink-soft);}
 
-  /* ---------- Skill strata ---------- */
-  .strata{border-top:1px solid var(--line-strong);}
-  .stratum{
-    display:grid;
-    grid-template-columns:220px 1fr;
-    gap:24px;
-    padding:20px 0;
-    border-bottom:1px solid var(--line);
-    align-items:start;
-  }
-  .stratum:nth-child(odd){background:linear-gradient(90deg, transparent, transparent);}
+  /* ---------- Core skills ---------- */
+  .core{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);}
+  .core-card{background:var(--paper);padding:26px;display:flex;flex-direction:column;gap:12px;}
+  .core-card .lvl{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);}
+  .core-card h3{font-size:1.9rem;text-transform:uppercase;line-height:1;}
+  .core-card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;color:var(--ink-soft);font-size:0.93rem;}
+  .core-card li{padding-left:16px;position:relative;}
+  .core-card li::before{content:"▪";position:absolute;left:0;color:var(--blue);}
+
+  .strata{border-top:1px solid var(--line-strong);margin-top:36px;}
+  .stratum{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--line);align-items:start;}
   .stratum-label{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);padding-top:4px;}
-  .stratum-label b{display:block;font-family:var(--display);font-size:1.5rem;color:var(--ink);text-transform:uppercase;font-weight:700;letter-spacing:0;margin-top:2px;}
+  .stratum-label b{display:block;font-family:var(--display);font-size:1.4rem;color:var(--ink);font-weight:700;letter-spacing:0;margin-top:2px;}
   .chips{display:flex;flex-wrap:wrap;gap:8px;}
-  .chip{
-    font-family:var(--mono);font-size:0.76rem;
-    border:1px solid var(--line-strong);
-    padding:6px 11px;color:var(--ink-soft);
-  }
+  .chip{font-family:var(--mono);font-size:0.76rem;border:1px solid var(--line-strong);padding:6px 11px;color:var(--ink-soft);}
+
+  /* ---------- AI ---------- */
+  .ai-band{background:var(--paper-raised);}
+  .ai-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .ai-item{border:1px solid var(--line-strong);background:var(--paper);padding:22px;}
+  .ai-item .k{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);}
+  .ai-item h3{font-size:1.35rem;text-transform:uppercase;margin-top:6px;}
+  .ai-item p{margin:8px 0 0;color:var(--ink-soft);font-size:0.93rem;}
+
+  /* ---------- Featured project ---------- */
+  .feature{border:1px solid var(--ink);display:grid;grid-template-columns:1.25fr 1fr;}
+  .feature-main{padding:32px;display:flex;flex-direction:column;gap:16px;}
+  .feature-side{padding:32px;border-left:1px solid var(--line-strong);background:var(--paper-raised);display:flex;flex-direction:column;gap:14px;}
+  .feature h3{font-size:clamp(1.8rem,3.6vw,2.6rem);text-transform:uppercase;line-height:1;}
+  .feature p{margin:0;color:var(--ink-soft);}
+  .feature-side h4{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;}
+  .steps{margin:0;padding-left:20px;color:var(--ink-soft);font-size:0.9rem;display:flex;flex-direction:column;gap:6px;}
+  .feature-side .btn{justify-content:center;}
+  .note{font-family:var(--mono);font-size:0.68rem;color:var(--ink-soft);line-height:1.5;}
+
+  /* ---------- Projects ---------- */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);margin-top:28px;}
+  .proj{background:var(--paper);padding:26px;display:flex;flex-direction:column;gap:12px;}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .proj-top h3{font-size:1.5rem;text-transform:uppercase;line-height:1.05;}
+  .proj-kind{font-family:var(--mono);font-size:0.68rem;color:var(--ink-soft);letter-spacing:0.04em;text-transform:uppercase;margin-top:4px;}
+  .proj p.desc{color:var(--ink-soft);font-size:0.94rem;flex:1;margin:0;}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .tag{font-family:var(--mono);font-size:0.66rem;letter-spacing:0.03em;text-transform:uppercase;color:var(--blue);border:1px solid color-mix(in srgb, var(--blue) 40%, transparent);padding:3px 8px;}
+  .tag.ai{color:var(--orange);border-color:color-mix(in srgb, var(--orange) 45%, transparent);}
+  .links{display:flex;flex-wrap:wrap;gap:16px;}
+  .visit{font-family:var(--mono);font-size:0.76rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--orange);padding-bottom:2px;display:inline-flex;align-items:center;gap:6px;}
+  .visit:hover{color:var(--orange);}
+  .visit svg{width:12px;height:12px;}
+  .private{font-family:var(--mono);font-size:0.7rem;color:var(--ink-soft);}
+
+  .status{font-family:var(--mono);font-size:0.64rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);display:inline-flex;align-items:center;gap:6px;white-space:nowrap;border:1px solid var(--line);padding:3px 7px;}
+  .status::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ink-soft);}
+  .status.up{color:var(--green);}
+  .status.up::before{background:var(--green);}
+  .status.down{color:var(--red);}
+  .status.down::before{background:var(--red);}
+
+  .other-list{border-top:1px solid var(--line-strong);margin-top:40px;}
+  .other-item{display:grid;grid-template-columns:1fr 2.2fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);}
+  .other-item h4{font-size:1.1rem;text-transform:uppercase;font-weight:700;}
+  .other-item p{margin:0;color:var(--ink-soft);font-size:0.92rem;max-width:58ch;}
+
+  /* ---------- Ops ---------- */
+  .ops{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:start;}
+  .ops p{margin:0 0 12px;color:var(--ink-soft);}
+  .ops-table{border-top:1px solid var(--line-strong);}
+  .ops-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:0.9rem;}
+  .ops-row span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .ops-meta{margin-top:12px;font-family:var(--mono);font-size:0.68rem;color:var(--ink-soft);}
 
   /* ---------- Experience ---------- */
-  .job{
-    border-left:3px solid var(--blue);
-    padding-left:24px;
-  }
+  .job{border-left:3px solid var(--blue);padding-left:24px;}
   .job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
   .job-head h3{font-size:1.5rem;text-transform:uppercase;}
   .job-head .period{font-family:var(--mono);font-size:0.78rem;color:var(--ink-soft);white-space:nowrap;}
@@ -162,110 +181,109 @@
   .job li{position:relative;padding-left:18px;color:var(--ink-soft);}
   .job li::before{content:"▪";position:absolute;left:0;color:var(--blue);}
 
-  /* ---------- Projects ---------- */
-  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);}
-  .proj{background:var(--paper);padding:26px;display:flex;flex-direction:column;gap:14px;}
-  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
-  .proj-top h3{font-size:1.5rem;text-transform:uppercase;line-height:1.05;}
-  .proj-domain{font-family:var(--mono);font-size:0.7rem;color:var(--ink-soft);letter-spacing:0.02em;word-break:break-all;}
-  .proj-status{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:6px;}
-  .proj-status::before{content:"";width:6px;height:6px;background:var(--orange);display:inline-block;}
-  .proj p.desc{color:var(--ink-soft);font-size:0.95rem;flex:1;}
-  .proj-tags{display:flex;flex-wrap:wrap;gap:6px;}
-  .tag{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.03em;text-transform:uppercase;color:var(--blue);border:1px solid color-mix(in srgb, var(--blue) 40%, transparent);padding:3px 8px;}
-  .visit{
-    align-self:flex-start;
-    font-family:var(--mono);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;
-    color:var(--ink);text-decoration:none;
-    border-bottom:1px solid var(--orange);
-    padding-bottom:2px;
-    display:inline-flex;align-items:center;gap:6px;
-    transition:color .15s ease, border-color .15s ease;
-  }
-  .visit:hover{color:var(--orange);}
-  .visit svg{width:12px;height:12px;transition:transform .15s ease;}
-  .visit:hover svg{transform:translate(2px,-2px);}
-
-  /* ---------- Other projects (list) ---------- */
-  .other-list{border-top:1px solid var(--line-strong);}
-  .other-item{
-    display:grid;grid-template-columns:1fr 2.2fr;gap:20px;
-    padding:18px 0;border-bottom:1px solid var(--line);
-  }
-  .other-item h4{font-family:var(--display);font-size:1.15rem;text-transform:uppercase;font-weight:700;letter-spacing:0;}
-  .other-item p{margin:4px 0 0;color:var(--ink-soft);font-size:0.92rem;max-width:56ch;}
-
   /* ---------- Education ---------- */
   .edu-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;}
-  .degree{border:1px solid var(--line-strong);padding:22px;}
+  .degree{border:1px solid var(--line-strong);padding:22px;margin-top:16px;}
   .degree .school{font-family:var(--mono);font-size:0.78rem;color:var(--orange);text-transform:uppercase;letter-spacing:0.05em;}
   .degree h3{margin-top:8px;font-size:1.4rem;text-transform:uppercase;}
   .degree .period{margin-top:10px;font-family:var(--mono);font-size:0.75rem;color:var(--ink-soft);}
-  .course-list{display:flex;flex-direction:column;}
-  .course{
-    display:flex;justify-content:space-between;gap:14px;
-    padding:11px 0;border-bottom:1px solid var(--line);
-    font-size:0.92rem;
-  }
+  .course-list{display:flex;flex-direction:column;margin-top:16px;}
+  .course{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:0.92rem;}
   .course span:last-child{font-family:var(--mono);font-size:0.75rem;color:var(--ink-soft);white-space:nowrap;}
 
   /* ---------- Footer ---------- */
-  footer{padding:48px 0 60px;}
+  footer{padding:52px 0 60px;}
   .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;align-items:flex-end;}
   .foot-grid h2{font-size:clamp(1.8rem,4vw,2.6rem);text-transform:uppercase;}
+  .foot-grid p{color:var(--ink-soft);max-width:40ch;margin:10px 0 0;}
   .foot-links{display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:0.82rem;}
-  .foot-links a{text-decoration:none;border-bottom:1px solid transparent;}
-  .foot-links a:hover{color:var(--blue);border-color:var(--blue);}
+  .foot-links a{text-decoration:none;}
+  .foot-links a:hover{color:var(--blue);}
   .fine{margin-top:40px;font-family:var(--mono);font-size:0.7rem;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
 
-  @media (max-width:760px){
-    .about-grid, .edu-grid, .stratum, .other-item{grid-template-columns:1fr;}
-    .proj-grid{grid-template-columns:1fr;}
-    .job-head{flex-direction:column;align-items:flex-start;}
-    .hero-grid{grid-template-columns:1fr;}
-    .hero-photo{order:-1;width:160px;}
+  @media (max-width:860px){
+    .nav{display:none;}
+    .core{grid-template-columns:1fr;}
+    .feature{grid-template-columns:1fr;}
+    .feature-side{border-left:0;border-top:1px solid var(--line-strong);}
+    .metrics{grid-template-columns:repeat(2,1fr);}
+    .metric:nth-child(2){border-right:0;}
+    .metric:nth-child(-n+2){border-bottom:1px solid var(--line);}
   }
-
+  @media (max-width:760px){
+    .wrap{padding:0 16px;}
+    .about-grid, .edu-grid, .stratum, .other-item, .ops, .ai-grid{grid-template-columns:1fr;}
+    .proj-grid{grid-template-columns:1fr;}
+    .hero-grid{grid-template-columns:1fr;gap:28px;}
+    .hero-photo{order:-1;width:180px;}
+    .feature-main, .feature-side{padding:22px;}
+    .topbar .avail{display:none;}
+  }
   @media (prefers-reduced-motion: reduce){
     *{transition:none !important;}
+    html{scroll-behavior:auto;}
   }
 </style>
+</head>
+<body>
 
-<div class="ruler">
+<div class="topbar">
   <div class="wrap">
-    <span>Sobradinho · DF · Brasil</span>
-    <span class="avail"><span class="dot"></span>Disponível — remoto / híbrido / presencial</span>
+    <a class="brand" href="#">Cássio Moreira</a>
+    <nav class="nav">
+      <a href="#stack">Stack</a>
+      <a href="#ia">IA</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <span class="avail"><span class="dot"></span>Disponível agora</span>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow"><span class="idx">000</span> Portfólio técnico</div>
+      <div class="eyebrow"><span class="idx">000</span> Desenvolvedor Full Stack · Brasília-DF</div>
       <h1>Cássio<br>Moreira&nbsp;de&nbsp;Souza</h1>
-      <p class="role">Desenvolvedor Full Stack — <b>Angular</b> · <b>React/Next.js</b> · <b>Java &amp; Spring Boot</b> · <b>PHP (Yii2)</b> · <b>PostgreSQL</b></p>
+      <p class="role">Construo sistemas completos — da API em <b>Java/Spring Boot</b> ao front em <b>React/Next.js</b> ou <b>Angular</b> — com <b>IA integrada</b> e rodando em produção.</p>
+      <div class="hero-stack">
+        <span>Java 17 · Spring Boot 3</span><span>React · Next.js 15</span><span>Angular</span><span>PostgreSQL</span><span>Docker</span><span class="ai">IA / LLMs</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="#projetos">Ver projetos</a>
+        <a class="btn accent" href="#app-financas">Testar app de finanças</a>
+        <a class="btn" href="mailto:cassiodevpro@gmail.com">Entrar em contato</a>
+      </div>
       <div class="contact-row">
         <a href="mailto:cassiodevpro@gmail.com">cassiodevpro@gmail.com</a>
-        <span>(61) 99214-6651</span>
-        <a href="https://linkedin.com/in/cassio-dev-pro" target="_blank" rel="noopener">linkedin.com/in/cassio-dev-pro</a>
-        <a href="https://github.com/cassiodevpro" target="_blank" rel="noopener">github.com/cassiodevpro</a>
+        <a href="https://wa.me/5561992146651" target="_blank" rel="noopener">(61) 99214-6651</a>
+        <a href="https://linkedin.com/in/cassio-dev-pro" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/cassiodevpro" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div>
     <div class="hero-photo">
       <div class="photo-mat">
-        <img src="cassio-moreira.jpg" alt="Cássio Moreira de Souza">
+        <img src="cassio-moreira.jpg" alt="Foto de Cássio Moreira de Souza" width="506" height="1024">
       </div>
-      <div class="photo-cap">Bacharel em Sistemas de Informação — 2024</div>
+      <div class="photo-cap">Bacharel em Sistemas de Informação</div>
     </div>
   </div>
 </header>
+
+<div class="wrap metrics">
+  <div class="metric"><b>2+</b><span>anos como Full Stack</span></div>
+  <div class="metric"><b>10+</b><span>sistemas publicados</span></div>
+  <div class="metric"><b>3</b><span>apps Android próprios</span></div>
+  <div class="metric"><b>24/7</b><span>sites monitorados automaticamente</span></div>
+</div>
 
 <section id="sobre">
   <div class="wrap about-grid">
     <div class="eyebrow"><span class="idx">001</span> Sobre</div>
     <div>
-      <p>Desenvolvedor Full Stack com cerca de 2 anos de experiência construindo e mantendo aplicações web em Angular, React, Next.js, PHP (Yii2) e PostgreSQL. Atuo em times ágeis com Scrum — inclusive como apoio de Trainee Scrum Master — integrando APIs REST e entregando interfaces modernas e responsivas.</p>
-      <p>Perfil colaborativo e de aprendizado rápido, hoje ampliando experiência com Java e Spring Boot em busca de posições como Desenvolvedor Full Stack ou Backend Java, contribuindo com soluções escaláveis e de alta qualidade.</p>
+      <p>Desenvolvedor Full Stack com experiência em times ágeis e em projetos próprios de ponta a ponta: modelo o banco, escrevo a API em Java com Spring Boot, construo a interface em React/Next.js ou Angular, empacoto tudo em Docker e publico em VPS e Vercel. Também entrego o app Android dos sistemas, com React Native.</p>
+      <p>Hoje aplico IA em duas frentes: dentro dos produtos (assistentes que leem texto, imagem, PDF e áudio) e no meu fluxo de trabalho, usando agentes de código com revisão humana para entregar mais rápido sem abrir mão de testes, segurança e código limpo. Busco posições de Desenvolvedor Full Stack ou Backend Java.</p>
     </div>
   </div>
 </section>
@@ -274,40 +292,233 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="eyebrow"><span class="idx">002</span> Stack</div>
-        <h2>Camadas de trabalho</h2>
+        <div class="eyebrow"><span class="idx">002</span> Stack principal</div>
+        <h2>Java · React · Angular</h2>
+      </div>
+      <p>As três tecnologias que uso no dia a dia, com o que já entreguei em cada uma.</p>
+    </div>
+    <div class="core">
+      <div class="core-card">
+        <div class="lvl">Backend</div>
+        <h3>Java &amp; Spring Boot</h3>
+        <ul>
+          <li>APIs REST com Spring Boot 3, Java 17, Spring Security e JWT</li>
+          <li>Clean Architecture + DDD, casos de uso e portas/adapters</li>
+          <li>JPA, Flyway, lock pessimista contra agendamento duplo</li>
+          <li>PDF com Thymeleaf, jobs agendados, e-mail e WhatsApp</li>
+          <li>Certificado digital ICP-Brasil e integração com o e-CAC</li>
+        </ul>
+      </div>
+      <div class="core-card">
+        <div class="lvl">Frontend</div>
+        <h3>React &amp; Next.js</h3>
+        <ul>
+          <li>Next.js 15 (App Router) + React 19 + TypeScript</li>
+          <li>Tailwind, shadcn/ui, React Hook Form + Zod</li>
+          <li>Auth.js com login Google e proxy para a API</li>
+          <li>Dashboards com gráficos, calendários e modo escuro</li>
+          <li>React Native (Expo) para apps Android com o mesmo backend</li>
+        </ul>
+      </div>
+      <div class="core-card">
+        <div class="lvl">Frontend</div>
+        <h3>Angular</h3>
+        <ul>
+          <li>Angular 15+ em produto corporativo na UITEC</li>
+          <li>Angular Material e componentes reutilizáveis</li>
+          <li>Integração com APIs REST e backend legado PHP (Yii2)</li>
+          <li>Site institucional em Angular + Spring Boot no ar</li>
+          <li>TCC: Angular + Spring Boot + MySQL com dashboard</li>
+        </ul>
       </div>
     </div>
+
     <div class="strata">
       <div class="stratum">
-        <div class="stratum-label">Camada 01<b>Frontend</b></div>
-        <div class="chips">
-          <span class="chip">Angular 15</span><span class="chip">React</span><span class="chip">Next.js</span>
-          <span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Tailwind CSS</span>
-          <span class="chip">Angular Material</span><span class="chip">Bootstrap</span>
-        </div>
+        <div class="stratum-label">Camada<b>Dados</b></div>
+        <div class="chips"><span class="chip">PostgreSQL 16</span><span class="chip">MySQL</span><span class="chip">SQLite</span><span class="chip">Prisma</span><span class="chip">Redis / BullMQ</span></div>
       </div>
       <div class="stratum">
-        <div class="stratum-label">Camada 02<b>Backend</b></div>
-        <div class="chips">
-          <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">PHP · Yii2</span>
-          <span class="chip">APIs REST</span>
-        </div>
+        <div class="stratum-label">Camada<b>Infra &amp; DevOps</b></div>
+        <div class="chips"><span class="chip">Docker Compose</span><span class="chip">VPS Linux + Nginx</span><span class="chip">Vercel</span><span class="chip">Firebase Hosting</span><span class="chip">GitHub Actions</span><span class="chip">Git / GitHub</span></div>
       </div>
       <div class="stratum">
-        <div class="stratum-label">Camada 03<b>Dados</b></div>
-        <div class="chips">
-          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span>
-        </div>
+        <div class="stratum-label">Camada<b>IA</b></div>
+        <div class="chips"><span class="chip">DeepSeek API</span><span class="chip">Whisper (áudio → texto)</span><span class="chip">Visão (imagem → texto)</span><span class="chip">Claude Code</span><span class="chip">Prompt engineering</span></div>
       </div>
       <div class="stratum">
-        <div class="stratum-label">Camada 04<b>Infra &amp; Fluxo</b></div>
-        <div class="chips">
-          <span class="chip">Git / GitHub</span><span class="chip">Vercel</span><span class="chip">Railway</span>
-          <span class="chip">Firebase</span><span class="chip">Jira</span><span class="chip">Monday</span>
-          <span class="chip">Postman</span><span class="chip">Scrum</span><span class="chip">Kanban</span>
-        </div>
+        <div class="stratum-label">Camada<b>Outros</b></div>
+        <div class="chips"><span class="chip">Node.js · TypeScript</span><span class="chip">PHP · Yii2</span><span class="chip">Telegram Bot API</span><span class="chip">Mercado Pago / PIX</span><span class="chip">Scrum · Kanban</span><span class="chip">Jira</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="ia" class="ai-band">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="idx">003</span> IA aplicada</div>
+        <h2>IA em produção, não só em demo</h2>
+      </div>
+      <p>Integro modelos de linguagem aos sistemas pelo backend Java, com as chaves só no servidor, limite de uso e controle de custo.</p>
+    </div>
+    <div class="ai-grid">
+      <div class="ai-item">
+        <div class="k">Agente financeiro</div>
+        <h3>Chat que entende texto, foto, PDF e áudio</h3>
+        <p>O usuário manda um comprovante, uma foto de nota ou um áudio, e a IA vira isso em lançamento, compromisso ou nota. Áudio passa pelo Whisper, imagem pelo modelo de visão e o DeepSeek decide a ação.</p>
+      </div>
+      <div class="ai-item">
+        <div class="k">Global Admin</div>
+        <h3>Assistente de contabilidade</h3>
+        <p>Assistente no canto da tela que responde dúvidas de clientes com a base de conhecimento do escritório. Não guarda conversas, tem limite por pessoa por hora e desliga sozinho sem chave configurada.</p>
+      </div>
+      <div class="ai-item">
+        <div class="k">Finanças pessoais</div>
+        <h3>Planos e análises gerados pela IA</h3>
+        <p>Plano diário para quitar dívidas (avalanche × bola de neve) e análise do cofrinho comparando Selic, CDI, IPCA e poupança com as taxas oficiais.</p>
+      </div>
+      <div class="ai-item">
+        <div class="k">Fluxo de desenvolvimento</div>
+        <h3>Agentes de código com revisão humana</h3>
+        <p>Uso Claude Code com regras por repositório (CLAUDE.md / AGENTS.md) para gerar, revisar e documentar código. Cada mudança passa por build, testes e minha revisão antes do deploy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="idx">004</span> Projetos</div>
+        <h2>Sistemas no ar</h2>
+      </div>
+      <p>Os selos de status são atualizados sozinhos a cada 6 horas por um monitor automático.</p>
+    </div>
+
+    <article class="feature" id="app-financas">
+      <div class="feature-main">
+        <div class="eyebrow"><span class="idx">★</span> Projeto em destaque · teste agora</div>
+        <h3>Agente Cassio Dev Pro</h3>
+        <p>Assistente financeiro pessoal com IA: dashboard com saldo e gráficos, orçamento com "Contas do mês", dívidas, cofrinho, agenda ligada ao Google Agenda, notas e bot no Telegram. Versão web e app Android usam o mesmo backend em produção.</p>
+        <p>Backend em <b>Java 17 + Spring Boot 3.3</b> com PostgreSQL 16 em Docker numa VPS; front em <b>Next.js 15 + React 19</b>; app em <b>React Native</b> com login por digital e alertas sonoros de vencimento. Nenhuma chave de API vai no app.</p>
+        <div class="proj-tags">
+          <span class="tag">Java 17</span><span class="tag">Spring Boot</span><span class="tag">Next.js</span><span class="tag">React Native</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag ai">DeepSeek</span><span class="tag ai">Whisper</span><span class="tag ai">Visão</span>
+        </div>
+        <div><span class="status" data-site="agente-financeiro">verificando…</span></div>
+      </div>
+      <div class="feature-side">
+        <h4>Como testar</h4>
+        <a class="btn primary" href="https://agente-cassiodevpro.vercel.app" target="_blank" rel="noopener">Abrir versão web ↗</a>
+        <a class="btn accent" href="https://github.com/cassiodevpro/portfolio/releases/download/app-financas-v1.3.0/agente-cassiodevpro-v1.3.0.apk">Baixar app Android (APK)</a>
+        <ol class="steps">
+          <li>Na tela de login, toque em <b>Solicitar acesso</b> e informe seu e-mail Google.</li>
+          <li>Eu libero o acesso, em geral no mesmo dia.</li>
+          <li>Entre com o Google ou e-mail e senha, na web ou no app.</li>
+        </ol>
+        <a class="btn" href="mailto:cassiodevpro@gmail.com?subject=Acesso%20de%20teste%20ao%20Agente%20Cassio%20Dev%20Pro">Pedir acesso por e-mail</a>
+        <p class="note">APK v1.3.0 · Android 8+ · ~61 MB. Ao instalar, permita "instalar apps de fontes desconhecidas". Documentação: <a href="https://dev-cassiodevpro.vercel.app" target="_blank" rel="noopener">dev-cassiodevpro.vercel.app</a></p>
+      </div>
+    </article>
+
+    <div class="proj-grid">
+
+      <div class="proj">
+        <div class="proj-top">
+          <div><h3>Global Admin</h3><div class="proj-kind">Sistema para escritório de contabilidade · cliente real</div></div>
+          <span class="status" data-site="global-admin-docs">…</span>
+        </div>
+        <p class="desc">Emissão de relações de faturamento em PDF, pastas de documentos por empresa, agenda de parcelamentos, verificação automática na Receita Federal (e-CAC via SERPRO), login com certificado digital ICP-Brasil, mensageria por e-mail e WhatsApp, bot financeiro no Telegram, assistente com IA e app Android de entregas com leitura de QR code e assinatura.</p>
+        <div class="proj-tags"><span class="tag">Spring Boot 3.5</span><span class="tag">Spring Security</span><span class="tag">Flyway</span><span class="tag">Next.js 15</span><span class="tag">React Native</span><span class="tag">PostgreSQL</span><span class="tag ai">IA DeepSeek</span></div>
+        <div class="links"><a class="visit" href="https://doc-global-cont.vercel.app" target="_blank" rel="noopener">Documentação técnica <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a><span class="private">Código privado (cliente)</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div><h3>Banho &amp; Tosa Adaca</h3><div class="proj-kind">Agendamento para pet shop · web + Android</div></div>
+          <span class="status" data-site="pet-adaca">…</span>
+        </div>
+        <p class="desc">Agendamento com disponibilidade por profissional e lock pessimista contra horário duplicado, pets com foto, caixa com PIX e baixa automática, loja de acessórios, mensagens tutor ↔ equipe e papéis ADMIN / PROFESSIONAL / OWNER. Backend em Clean Architecture + DDD.</p>
+        <div class="proj-tags"><span class="tag">Java 17</span><span class="tag">Spring Boot</span><span class="tag">JWT</span><span class="tag">Next.js</span><span class="tag">React Native</span><span class="tag">Mercado Pago</span><span class="tag">Docker · VPS</span></div>
+        <div class="links"><a class="visit" href="https://danilo-pet.vercel.app" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div><h3>Job Hunter Agent</h3><div class="proj-kind">Agente autônomo de carreira</div></div>
+          <span class="status" data-site="job-hunter">…</span>
+        </div>
+        <p class="desc">Agente que busca vagas a cada 2 horas, calcula score de compatibilidade com meu perfil, evita duplicadas, gera currículo direcionado e prepara entrevista. Motores com interface plugável, prontos para trocar regras por IA sem mexer no resto.</p>
+        <div class="proj-tags"><span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">BullMQ</span><span class="tag">Prisma</span><span class="tag">Next.js</span><span class="tag">Jest</span><span class="tag ai">Pronto para IA</span></div>
+        <div class="links"><a class="visit" href="https://frontend-two-pi-41.vercel.app/" target="_blank" rel="noopener">Abrir painel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div><h3>Só Jesus Salva</h3><div class="proj-kind">Site institucional</div></div>
+          <span class="status" data-site="sojesussalva">…</span>
+        </div>
+        <p class="desc">Site de uma comunidade evangélica com identidade da igreja, mensagens e contato. Front em Angular no Firebase Hosting, backend em Java e Spring Boot com banco em VPS própria via Docker.</p>
+        <div class="proj-tags"><span class="tag">Angular</span><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Docker</span><span class="tag">Firebase</span></div>
+        <div class="links"><a class="visit" href="https://adssojesussalva-b03fa.web.app/" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div><h3>Facilito Smart</h3><div class="proj-kind">Hub de automação varejista</div></div>
+          <span class="status" data-site="facilito">…</span>
+        </div>
+        <p class="desc">Hub para lojas autônomas 24h, quiosques self-service, PDV/ERP, suporte técnico e mídia indoor, com várias frentes de conteúdo numa única aplicação.</p>
+        <div class="proj-tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Vercel</span></div>
+        <div class="links"><a class="visit" href="https://projetoleo.vercel.app" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div><h3>Hiragana Pro</h3><div class="proj-kind">Guia de japonês PT/JP</div></div>
+          <span class="status" data-site="hiragana">…</span>
+        </div>
+        <p class="desc">Guia visual bilíngue para Hiragana, Katakana, Kanji e numerais japoneses, com seções em abas e rota própria para cada conjunto de caracteres.</p>
+        <div class="proj-tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Vercel</span></div>
+        <div class="links"><a class="visit" href="https://projeto-japao.vercel.app/" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </div>
+
+    </div>
+
+    <div class="other-list">
+      <div class="other-item">
+        <h4>Convite de Aniversário</h4>
+        <p>Convite digital com contagem regressiva, confirmação de presença pelo WhatsApp e lista de presentes. <a href="https://convite-aniversario-ebon-three.vercel.app/" target="_blank" rel="noopener">Ver ↗</a></p>
+      </div>
+      <div class="other-item">
+        <h4>Sistema de Integração (TCC)</h4>
+        <p>Gestão de usuários com Angular 15, Spring Boot e MySQL: CRUD completo, autenticação e dashboard com Angular Material.</p>
+      </div>
+      <div class="other-item">
+        <h4>Plataforma de Psicologia</h4>
+        <p>Plataforma web com Angular, Next.js e PHP (Yii2), integrando um frontend moderno a um backend legado.</p>
+      </div>
+      <div class="other-item">
+        <h4>Automação de dados ENEM</h4>
+        <p>Pipeline em Python que coleta e consolida indicadores de desempenho do ENEM em relatórios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="operacao">
+  <div class="wrap ops">
+    <div>
+      <div class="eyebrow"><span class="idx">005</span> Operação autônoma</div>
+      <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);text-transform:uppercase;margin-top:6px;">Sites que se vigiam sozinhos</h2>
+      <p style="margin-top:16px;">Um workflow do GitHub Actions verifica todos os sistemas a cada 6 horas, grava o resultado neste portfólio e abre um alerta automático quando algum site sai do ar. Quando volta, o alerta é fechado sozinho.</p>
+      <p>Assim quem visita vê o estado real dos projetos, e eu fico sabendo de uma queda antes do usuário.</p>
+    </div>
+    <div>
+      <div class="ops-table" id="ops-table"></div>
+      <div class="ops-meta" id="ops-meta">Carregando status…</div>
     </div>
   </div>
 </section>
@@ -316,7 +527,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="eyebrow"><span class="idx">003</span> Experiência</div>
+        <div class="eyebrow"><span class="idx">006</span> Experiência</div>
         <h2>Trajetória profissional</h2>
       </div>
     </div>
@@ -329,121 +540,13 @@
         <div class="period">Set/2024 — Jul/2026</div>
       </div>
       <ul>
-        <li>Desenvolvimento e manutenção de funcionalidades frontend e backend em aplicações web com Angular 15, React/Next.js e PHP (Yii2).</li>
-        <li>Manutenção evolutiva de sistemas legados, com correção de bugs e melhoria contínua de funcionalidades.</li>
-        <li>Implementação de integrações com APIs REST, garantindo comunicação eficiente entre frontend e backend.</li>
-        <li>Manipulação e consultas em banco de dados PostgreSQL para suporte às funcionalidades da aplicação.</li>
-        <li>Componentes reutilizáveis seguindo boas práticas de frontend (Tailwind CSS, Angular Material, Bootstrap).</li>
-        <li>Participação ativa em cerimônias Scrum e apoio ao Scrum Master na organização das sprints (Trainee Scrum Master).</li>
-        <li>Colaboração entre equipes de frontend e backend, com versionamento via Git/GitHub e code review.</li>
-        <li>Gestão de tarefas com Jira e Monday, em ambiente ágil com Scrum e Kanban.</li>
+        <li>Desenvolvimento e manutenção de funcionalidades frontend e backend com Angular 15, React/Next.js e PHP (Yii2).</li>
+        <li>Manutenção evolutiva de sistemas legados, com correção de bugs e melhoria contínua.</li>
+        <li>Integrações com APIs REST e consultas em PostgreSQL para suporte às funcionalidades.</li>
+        <li>Componentes reutilizáveis com Tailwind CSS, Angular Material e Bootstrap.</li>
+        <li>Apoio ao Scrum Master na organização das sprints (Trainee Scrum Master) e participação ativa nas cerimônias.</li>
+        <li>Code review, versionamento com Git/GitHub e gestão de tarefas com Jira e Monday.</li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<section id="projetos">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow"><span class="idx">004</span> Projetos em produção</div>
-        <h2>No ar agora</h2>
-      </div>
-    </div>
-    <div class="proj-grid">
-
-      <div class="proj">
-        <div class="proj-top">
-          <div>
-            <h3>Só Jesus Salva</h3>
-            <div class="proj-domain">adssojesussalva-b03fa.web.app</div>
-          </div>
-        </div>
-        <p class="desc">Site institucional para uma comunidade religiosa evangélica, apresentando a identidade da igreja, mensagens e informações de contato para os membros. Frontend em Angular publicado no Firebase Hosting, com backend em Java e Spring Boot e banco de dados em uma VPS própria, containerizado via Docker.</p>
-        <div class="proj-tags"><span class="tag">Angular</span><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Docker</span><span class="tag">VPS</span><span class="tag">Firebase Hosting</span></div>
-        <a class="visit" href="https://adssojesussalva-b03fa.web.app/" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      </div>
-
-      <div class="proj">
-        <div class="proj-top">
-          <div>
-            <h3>Banho &amp; Tosa Adaca</h3>
-            <div class="proj-domain">danilo-pet.vercel.app</div>
-          </div>
-        </div>
-        <div class="proj-status">Em construção — deploy final via VPS</div>
-        <p class="desc">Site para um negócio de banho e tosa, apresentando os serviços do pet shop de forma direta para clientes que buscam agendar cuidados para seus animais. O frontend está publicado aqui na Vercel apenas para ambiente de desenvolvimento; o backend já roda em uma VPS própria, com Java e PostgreSQL containerizados via Docker. Em produção, frontend e backend serão servidos integralmente pela VPS, junto ao domínio definitivo.</p>
-        <div class="proj-tags"><span class="tag">React / Next.js</span><span class="tag">Java</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">VPS</span><span class="tag">Vercel · Dev</span></div>
-        <a class="visit" href="https://danilo-pet.vercel.app" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      </div>
-
-      <div class="proj">
-        <div class="proj-top">
-          <div>
-            <h3>Facilito Smart</h3>
-            <div class="proj-domain">projetoleo.vercel.app</div>
-          </div>
-        </div>
-        <p class="desc">Hub institucional para um ecossistema de automação varejista: lojas autônomas 24h, quiosques self-service, sistemas de PDV/ERP, suporte técnico e mídia indoor — um projeto de maior porte com múltiplas frentes de conteúdo em uma única aplicação.</p>
-        <div class="proj-tags"><span class="tag">React / Next.js</span><span class="tag">Vercel</span></div>
-        <a class="visit" href="https://projetoleo.vercel.app" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      </div>
-
-      <div class="proj">
-        <div class="proj-top">
-          <div>
-            <h3>Hiragana Pro</h3>
-            <div class="proj-domain">projeto-japao.vercel.app</div>
-          </div>
-        </div>
-        <p class="desc">Guia visual bilíngue (PT/JP) para aprender Hiragana, Katakana, Kanji e numerais japoneses, organizado em seções navegáveis por abas com rotas próprias para cada conjunto de caracteres.</p>
-        <div class="proj-tags"><span class="tag">React / Next.js</span><span class="tag">Vercel</span></div>
-        <a class="visit" href="https://projeto-japao.vercel.app/" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      </div>
-
-      <div class="proj">
-        <div class="proj-top">
-          <div>
-            <h3>Agente de Busca de Vagas</h3>
-            <div class="proj-domain">frontend-two-pi-41.vercel.app</div>
-          </div>
-        </div>
-        <p class="desc">Agente automatizado que busca vagas de emprego a cada duas horas com base no meu perfil, usando uma API gratuita, e salva os resultados em um banco de dados para consulta.</p>
-        <div class="proj-tags"><span class="tag">Automação</span><span class="tag">API</span><span class="tag">Banco de Dados</span><span class="tag">Vercel</span></div>
-        <a class="visit" href="https://frontend-two-pi-41.vercel.app/" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      </div>
-
-      <div class="proj">
-        <div class="proj-top">
-          <div>
-            <h3>Convite de Aniversário</h3>
-            <div class="proj-domain">convite-aniversario-ebon-three.vercel.app</div>
-          </div>
-        </div>
-        <p class="desc">Convite digital personalizado para festa de aniversário infantil, com contagem regressiva até o evento, confirmação de presença via WhatsApp e seção de sugestões de presente.</p>
-        <div class="proj-tags"><span class="tag">Next.js</span><span class="tag">WhatsApp API</span><span class="tag">Vercel</span></div>
-        <a class="visit" href="https://convite-aniversario-ebon-three.vercel.app/" target="_blank" rel="noopener">Visitar site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      </div>
-
-    </div>
-
-    <div class="other-list">
-      <div class="other-item">
-        <h4>Sistema de Integração (TCC)</h4>
-        <p>Aplicação de gerenciamento de usuários com frontend em Angular 15, backend em Spring Boot e banco de dados MySQL. CRUD completo, autenticação e dashboard interativo, estilizado com Angular Material.</p>
-      </div>
-      <div class="other-item">
-        <h4>Plataforma de Psicologia</h4>
-        <p>Plataforma web com Angular, Next.js e PHP (Yii2), integrando um frontend moderno a um backend legado.</p>
-      </div>
-      <div class="other-item">
-        <h4>Sistema de Agendamento Inteligente</h4>
-        <p>Projeto pessoal de agendamento de serviços com controle de conflitos de horários e API própria.</p>
-      </div>
-      <div class="other-item">
-        <h4>Sistema de Currículos e APIs REST</h4>
-        <p>APIs REST e sistema de autenticação para gestão de currículos e dados de usuários.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -451,49 +554,95 @@
 <section id="formacao">
   <div class="wrap edu-grid">
     <div>
-      <div class="eyebrow"><span class="idx">005</span> Formação</div>
-      <div class="degree" style="margin-top:16px;">
+      <div class="eyebrow"><span class="idx">007</span> Formação</div>
+      <div class="degree">
         <div class="school">Projeção — Brasília, DF</div>
         <h3>Bacharelado em Sistemas de Informação</h3>
         <div class="period">2020 — 2024</div>
       </div>
-      <div class="degree" style="margin-top:16px;">
+      <div class="degree">
         <div class="school">Idioma</div>
         <h3 style="font-size:1.15rem;">Inglês — Intermediário (B1)</h3>
         <div class="period">Leitura técnica e conversação básica</div>
       </div>
     </div>
     <div>
-      <div class="eyebrow"><span class="idx">006</span> Cursos complementares</div>
-      <div class="course-list" style="margin-top:16px;">
+      <div class="eyebrow"><span class="idx">008</span> Cursos complementares</div>
+      <div class="course-list">
         <div class="course"><span>Angular Web Development</span><span>Udemy · 2024</span></div>
         <div class="course"><span>Angular Avançado com Projeto Real</span><span>Udemy · 2025</span></div>
         <div class="course"><span>React + Next.js</span><span>Udemy · 2025</span></div>
         <div class="course"><span>Java com Spring Boot</span><span>Udemy · 2024</span></div>
         <div class="course"><span>Java Completo com Spring</span><span>DIO/CI&amp;T</span></div>
         <div class="course"><span>Banco de Dados Relacional com SQL</span><span>Udemy · 2025</span></div>
+        <div class="course"><span>Desafio de IA com NotebookLM</span><span>DIO · 2026</span></div>
         <div class="course"><span>Versionamento com Git e GitHub</span><span>DIO · 2024</span></div>
         <div class="course"><span>Fundamentos de Atendimento e Tecnologia</span><span>IBM SkillsBuild · 2024</span></div>
-        <div class="course"><span>Lógica de Programação, Java, BD, Spring, HTML+Bootstrap, JS</span><span>SENAI/DF</span></div>
+        <div class="course"><span>Lógica, Java, BD, Spring, HTML+Bootstrap, JS</span><span>SENAI/DF</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
+<footer id="contato">
   <div class="wrap">
     <div class="foot-grid">
-      <h2>Vamos<br>conversar?</h2>
+      <div>
+        <h2>Vamos<br>conversar?</h2>
+        <p>Disponível para vagas Full Stack ou Backend Java — remoto, híbrido ou presencial em Brasília-DF.</p>
+      </div>
       <div class="foot-links">
         <a href="mailto:cassiodevpro@gmail.com">cassiodevpro@gmail.com</a>
+        <a href="https://wa.me/5561992146651" target="_blank" rel="noopener">WhatsApp (61) 99214-6651 ↗</a>
         <a href="https://linkedin.com/in/cassio-dev-pro" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="https://github.com/cassiodevpro" target="_blank" rel="noopener">GitHub ↗</a>
-        <span>(61) 99214-6651</span>
       </div>
     </div>
     <div class="fine">
       <span>Cássio Moreira de Souza — Sobradinho, DF, Brasil</span>
-      <span>Disponível para remoto, híbrido ou presencial em Brasília-DF</span>
+      <span>Status dos sites atualizado automaticamente via GitHub Actions</span>
     </div>
   </div>
 </footer>
+
+<script>
+  (function(){
+    function ago(iso){
+      var h = Math.round((Date.now() - new Date(iso).getTime()) / 36e5);
+      return h < 1 ? 'há menos de 1h' : 'há ' + h + 'h';
+    }
+    fetch('status.json', {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
+      .then(function(data){
+        var byId = {};
+        data.sites.forEach(function(s){ byId[s.id] = s; });
+        document.querySelectorAll('.status[data-site]').forEach(function(el){
+          var s = byId[el.dataset.site];
+          if(!s){ el.remove(); return; }
+          el.classList.add(s.up ? 'up' : 'down');
+          el.textContent = (s.up ? 'Online' : 'Fora do ar') + (s.ms ? ' · ' + s.ms + ' ms' : '');
+        });
+        var table = document.getElementById('ops-table');
+        data.sites.forEach(function(s){
+          var row = document.createElement('div');
+          row.className = 'ops-row';
+          var name = document.createElement('span');
+          name.textContent = s.name;
+          var st = document.createElement('span');
+          st.className = 'status ' + (s.up ? 'up' : 'down');
+          st.textContent = s.up ? 'Online' : 'Fora do ar';
+          row.appendChild(name); row.appendChild(st);
+          table.appendChild(row);
+        });
+        var up = data.sites.filter(function(s){ return s.up; }).length;
+        document.getElementById('ops-meta').textContent =
+          up + ' de ' + data.sites.length + ' online · última verificação ' + ago(data.checkedAt);
+      })
+      .catch(function(){
+        document.querySelectorAll('.status[data-site]').forEach(function(el){ el.remove(); });
+        document.getElementById('ops-meta').textContent = 'Status indisponível no momento.';
+      });
+  })();
+</script>
+</body>
+</html>
