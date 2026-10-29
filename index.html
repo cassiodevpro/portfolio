@@ -133,6 +133,9 @@
   .feature-side h4{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;}
   .steps{margin:0;padding-left:20px;color:var(--ink-soft);font-size:0.9rem;display:flex;flex-direction:column;gap:6px;}
   .feature-side .btn{justify-content:center;}
+  .install{border:1px solid var(--line-strong);background:var(--paper);padding:10px 14px;}
+  .install summary{cursor:pointer;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.05em;text-transform:uppercase;}
+  .install .steps{margin-top:10px;}
   .note{font-family:var(--mono);font-size:0.68rem;color:var(--ink-soft);line-height:1.5;}
 
   /* ---------- Projects ---------- */
@@ -419,7 +422,18 @@
           <li>Entre com o Google ou e-mail e senha, na web ou no app.</li>
         </ol>
         <a class="btn" href="mailto:cassiodevpro@gmail.com?subject=Acesso%20de%20teste%20ao%20Agente%20Cassio%20Dev%20Pro">Pedir acesso por e-mail</a>
-        <p class="note">APK v1.3.0 · Android 8+ · ~61 MB. Ao instalar, permita "instalar apps de fontes desconhecidas". Documentação: <a href="https://dev-cassiodevpro.vercel.app" target="_blank" rel="noopener">dev-cassiodevpro.vercel.app</a></p>
+        <details class="install">
+          <summary>Como instalar o APK no Android</summary>
+          <ol class="steps">
+            <li>Toque em <b>Baixar app Android</b> no celular e confirme o download (~61 MB).</li>
+            <li>Abra o arquivo baixado pela notificação ou em <b>Arquivos → Downloads</b>.</li>
+            <li>Se aparecer <i>"seu telefone não tem permissão para instalar apps desconhecidos desta fonte"</i>, toque em <b>Configurações</b> e ative <b>Permitir desta fonte</b>.</li>
+            <li>Volte e toque em <b>Instalar</b>.</li>
+            <li>Se o Play Protect avisar que o app não foi verificado, toque em <b>Mais detalhes → Instalar mesmo assim</b>. Isso acontece porque o app não está na Play Store.</li>
+            <li>Depois de instalar, você pode desativar <b>Permitir desta fonte</b> de novo.</li>
+          </ol>
+        </details>
+        <p class="note">APK v1.3.0 · Android 8+ · ~61 MB. O app não pede acesso a contatos nem a SMS, e nenhuma chave de API vai dentro dele. Documentação: <a href="https://dev-cassiodevpro.vercel.app" target="_blank" rel="noopener">dev-cassiodevpro.vercel.app</a></p>
       </div>
     </article>
 
