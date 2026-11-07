@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-07T12:37:35.582Z",
+  "checkedAt": "2026-11-07T21:33:30.114Z",
   "sites": [
     {
       "id": "agente-financeiro",
@@ -7,7 +7,7 @@
       "url": "https://agente-cassiodevpro.vercel.app",
       "up": true,
       "code": 200,
-      "ms": 1462
+      "ms": 1141
     },
     {
       "id": "agente-financeiro-api",
@@ -15,7 +15,7 @@
       "url": "https://129-121-55-185.sslip.io:8447/actuator/health",
       "up": true,
       "code": 200,
-      "ms": 686
+      "ms": 509
     },
     {
       "id": "agente-financeiro-docs",
@@ -23,7 +23,7 @@
       "url": "https://dev-cassiodevpro.vercel.app",
       "up": true,
       "code": 200,
-      "ms": 246
+      "ms": 184
     },
     {
       "id": "global-admin-docs",
@@ -31,7 +31,7 @@
       "url": "https://doc-global-cont.vercel.app",
       "up": true,
       "code": 200,
-      "ms": 451
+      "ms": 202
     },
     {
       "id": "pet-adaca",
@@ -39,7 +39,7 @@
       "url": "https://danilo-pet.vercel.app",
       "up": true,
       "code": 200,
-      "ms": 357
+      "ms": 290
     },
     {
       "id": "job-hunter",
@@ -47,7 +47,7 @@
       "url": "https://frontend-two-pi-41.vercel.app",
       "up": true,
       "code": 200,
-      "ms": 1406
+      "ms": 1221
     },
     {
       "id": "sojesussalva",
@@ -55,7 +55,7 @@
       "url": "https://adssojesussalva-b03fa.web.app",
       "up": true,
       "code": 200,
-      "ms": 258
+      "ms": 323
     },
     {
       "id": "facilito",
@@ -63,7 +63,7 @@
       "url": "https://projetoleo.vercel.app",
       "up": true,
       "code": 200,
-      "ms": 401
+      "ms": 305
     },
     {
       "id": "hiragana",
@@ -71,7 +71,7 @@
       "url": "https://projeto-japao.vercel.app",
       "up": true,
       "code": 200,
-      "ms": 460
+      "ms": 357
     },
     {
       "id": "convite",
@@ -79,7 +79,7 @@
       "url": "https://convite-aniversario-ebon-three.vercel.app",
       "up": true,
       "code": 200,
-      "ms": 456
+      "ms": 363
     }
   ]
 }
