@@ -11,6 +11,17 @@ Página única (`index.html`) publicada na Vercel: https://portfolio-repo-liard-
 
 Rodar localmente: `node monitor/check.mjs`.
 
+## Chat "Pergunte sobre mim"
+
+- `api/chat.js` é uma função serverless da Vercel (`POST /api/chat`) que chama a DeepSeek com um resumo do perfil.
+- A chave fica **só** na variável de ambiente `DEEPSEEK_API_KEY` da Vercel (Settings → Environment Variables), nunca no repositório.
+- Sem a variável, o chat responde "desativado" em vez de quebrar. Limite: 15 perguntas por IP a cada 10 minutos.
+- Ao mudar experiência ou projetos, atualize o texto `PROFILE` em `api/chat.js`.
+
+## Stack dos projetos ao passar o mouse
+
+Cada projeto tem `data-langs` e `data-tech` no `index.html` (separados por vírgula; prefixo `*` destaca em laranja como IA).
+
 ## App de finanças
 
 O APK do Agente Cassio Dev Pro fica em *Releases* (`app-financas-v<versão>`). Para publicar uma versão nova:
