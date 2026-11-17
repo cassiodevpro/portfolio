@@ -205,26 +205,39 @@
   .foot-links a:hover{color:var(--blue);}
   .fine{margin-top:40px;font-family:var(--mono);font-size:0.7rem;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
 
-  /* ---------- Stack ao passar o mouse ---------- */
-  .has-stack{position:relative;}
-  .stack-hint{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);display:inline-flex;align-items:center;gap:6px;}
-  .stack-hint::before{content:"</>";color:var(--blue);font-weight:600;}
-  .stack-reveal{position:absolute;inset:0;z-index:2;background:color-mix(in srgb, var(--paper) 96%, transparent);backdrop-filter:blur(3px);border:1px solid var(--blue);padding:24px;display:flex;flex-direction:column;gap:14px;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease, transform .18s ease, visibility 0s linear .18s;overflow:auto;}
-  .has-stack:hover > .stack-reveal, .has-stack:focus-within > .stack-reveal{opacity:1;visibility:visible;transform:none;transition:opacity .18s ease, transform .18s ease, visibility 0s;}
-  .has-stack:focus-visible{outline:2px solid var(--blue);outline-offset:-2px;}
-  .stack-reveal h4{font-family:var(--display);font-size:1.35rem;text-transform:uppercase;line-height:1;}
-  .stack-group .lbl{font-family:var(--mono);font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px;}
-  .stack-group .chips{gap:6px;}
-  .lang{font-family:var(--mono);font-size:0.78rem;font-weight:600;padding:5px 10px;background:var(--ink);color:var(--paper);}
-  .stack-reveal .chip{color:var(--ink);font-size:0.72rem;padding:4px 9px;}
-  .stack-reveal .chip.ai{color:var(--orange);border-color:color-mix(in srgb, var(--orange) 50%, transparent);}
-  .stack-reveal .links{margin-top:auto;}
-  .other-item .mini-stack{display:grid;grid-template-rows:0fr;transition:grid-template-rows .2s ease;grid-column:2;}
-  .other-item .mini-stack > div{overflow:hidden;display:flex;flex-wrap:wrap;gap:6px;}
-  .other-item:hover .mini-stack, .other-item:focus-within .mini-stack{grid-template-rows:1fr;}
-  .other-item .mini-stack .lang{font-size:0.68rem;padding:3px 8px;margin-top:8px;}
-  .other-item .mini-stack .chip{font-size:0.66rem;padding:3px 8px;margin-top:8px;}
-  @media (hover:none){ .stack-hint::after{content:" · toque";} }
+  /* ---------- Stack de cada projeto (fixa, sem efeito de hover) ---------- */
+  .stack-static{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line);padding-top:12px;}
+  .stack-row{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:start;}
+  .stack-row .lbl{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);padding-top:4px;}
+  .stack-row .chips{gap:6px;}
+  .lang{font-family:var(--mono);font-size:0.72rem;font-weight:600;padding:3px 9px;background:var(--ink);color:var(--paper);}
+  .stack-static .chip{font-size:0.68rem;padding:3px 8px;color:var(--ink);}
+  .stack-static .chip.ai{color:var(--orange);border-color:color-mix(in srgb, var(--orange) 50%, transparent);}
+  .other-item .mini-stack{grid-column:2;display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+  .other-item .mini-stack .lang{font-size:0.64rem;padding:2px 7px;}
+  .other-item .mini-stack .chip{font-size:0.62rem;padding:2px 7px;}
+  @media (max-width:480px){ .stack-row{grid-template-columns:1fr;gap:4px;} }
+
+  /* ---------- Carrossel de telas ---------- */
+  .gallery{background:var(--paper-raised);}
+  .carousel{position:relative;}
+  .car-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:6px;scrollbar-width:none;}
+  .car-track::-webkit-scrollbar{display:none;}
+  .slide{flex:0 0 min(760px, 86%);scroll-snap-align:start;margin:0;border:1px solid var(--line-strong);background:var(--paper);}
+  .slide .chrome{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid var(--line);}
+  .slide .chrome i{width:8px;height:8px;border-radius:50%;background:var(--line-strong);display:block;}
+  .slide .chrome span{margin-left:8px;font-family:var(--mono);font-size:0.64rem;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .slide img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;background:var(--paper-raised);}
+  .slide figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;flex-wrap:wrap;}
+  .slide figcaption b{font-family:var(--display);font-size:1.25rem;text-transform:uppercase;line-height:1;}
+  .slide figcaption small{display:block;font-family:var(--mono);font-size:0.64rem;color:var(--ink-soft);margin-top:3px;text-transform:uppercase;letter-spacing:0.04em;}
+  .car-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;}
+  .car-dots{display:flex;gap:6px;flex-wrap:wrap;}
+  .car-dots button{width:22px;height:4px;border:0;padding:0;background:var(--line-strong);cursor:pointer;}
+  .car-dots button[aria-current="true"]{background:var(--orange);}
+  .car-arrows{display:flex;gap:8px;}
+  .car-arrows button{width:40px;height:40px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;font-size:1rem;}
+  .car-arrows button:hover{border-color:var(--blue);color:var(--blue);}
 
   /* ---------- Chat "Pergunte sobre mim" ---------- */
   .chat-fab{position:fixed;right:20px;bottom:20px;z-index:40;font-family:var(--mono);font-size:0.76rem;text-transform:uppercase;letter-spacing:0.06em;background:var(--ink);color:var(--paper);border:0;padding:13px 18px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,0.18);}
@@ -303,6 +316,7 @@
       <a href="#stack">Stack</a>
       <a href="#ia">IA</a>
       <a href="#projetos">Projetos</a>
+      <a href="#galeria">Galeria</a>
       <a href="#experiencia">Experiência</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -675,6 +689,69 @@
   </div>
 </section>
 
+<section id="galeria" class="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="idx">009</span> Galeria</div>
+        <h2>Telas dos projetos</h2>
+      </div>
+      <p>Capturas dos sistemas no ar. Use as setas ou arraste para o lado.</p>
+    </div>
+    <div class="carousel" aria-roledescription="carrossel" aria-label="Telas dos projetos">
+      <div class="car-track" id="car-track">
+        <figure class="slide">
+          <div class="chrome"><i></i><i></i><i></i><span>agente-cassiodevpro.vercel.app</span></div>
+          <img src="img/projetos/agente.webp" alt="Tela de entrada do Agente Cassio Dev Pro, assistente financeiro com IA" width="1280" height="800" loading="lazy">
+          <figcaption><div><b>Agente Cassio Dev Pro</b><small>Java · Spring Boot · Next.js · DeepSeek</small></div><a class="visit" href="https://agente-cassiodevpro.vercel.app" target="_blank" rel="noopener">Abrir ↗</a></figcaption>
+        </figure>
+        <figure class="slide">
+          <div class="chrome"><i></i><i></i><i></i><span>dev-cassiodevpro.vercel.app</span></div>
+          <img src="img/projetos/agente-docs.webp" alt="Documentação técnica do Agente Cassio Dev Pro" width="1280" height="800" loading="lazy">
+          <figcaption><div><b>Agente · Documentação</b><small>Arquitetura, portas e funcionalidades</small></div><a class="visit" href="https://dev-cassiodevpro.vercel.app" target="_blank" rel="noopener">Abrir ↗</a></figcaption>
+        </figure>
+        <figure class="slide">
+          <div class="chrome"><i></i><i></i><i></i><span>doc-global-cont.vercel.app</span></div>
+          <img src="img/projetos/global-admin.webp" alt="Documentação técnica do Global Admin, sistema para escritório de contabilidade" width="1280" height="800" loading="lazy">
+          <figcaption><div><b>Global Admin</b><small>Spring Boot 3.5 · Next.js 15 · PostgreSQL</small></div><a class="visit" href="https://doc-global-cont.vercel.app" target="_blank" rel="noopener">Abrir ↗</a></figcaption>
+        </figure>
+        <figure class="slide">
+          <div class="chrome"><i></i><i></i><i></i><span>danilo-pet.vercel.app</span></div>
+          <img src="img/projetos/pet-adaca.webp" alt="Tela de entrada do Banho e Tosa Adaca" width="1280" height="800" loading="lazy">
+          <figcaption><div><b>Banho &amp; Tosa Adaca</b><small>Java · Spring Boot · Next.js · Mercado Pago</small></div><a class="visit" href="https://danilo-pet.vercel.app" target="_blank" rel="noopener">Abrir ↗</a></figcaption>
+        </figure>
+        <figure class="slide">
+          <div class="chrome"><i></i><i></i><i></i><span>frontend-two-pi-41.vercel.app</span></div>
+          <img src="img/projetos/job-hunter.webp" alt="Painel do Job Hunter Agent" width="1280" height="800" loading="lazy">
+          <figcaption><div><b>Job Hunter Agent</b><small>Node.js · TypeScript · BullMQ · Next.js</small></div><a class="visit" href="https://frontend-two-pi-41.vercel.app/" target="_blank" rel="noopener">Abrir ↗</a></figcaption>
+        </figure>
+        <figure class="slide">
+          <div class="chrome"><i></i><i></i><i></i><span>projetoleo.vercel.app</span></div>
+          <img src="img/projetos/facilito.webp" alt="Página inicial do Facilito Smart" width="1280" height="800" loading="lazy">
+          <figcaption><div><b>Facilito Smart</b><small>React · Next.js · Vercel</small></div><a class="visit" href="https://projetoleo.vercel.app" target="_blank" rel="noopener">Abrir ↗</a></figcaption>
+        </figure>
+        <figure class="slide">
+          <div class="chrome"><i></i><i></i><i></i><span>projeto-japao.vercel.app</span></div>
+          <img src="img/projetos/hiragana.webp" alt="Página inicial do guia de japonês Hiragana Pro" width="1280" height="800" loading="lazy">
+          <figcaption><div><b>Hiragana Pro</b><small>React · Next.js · Vercel</small></div><a class="visit" href="https://projeto-japao.vercel.app/" target="_blank" rel="noopener">Abrir ↗</a></figcaption>
+        </figure>
+        <figure class="slide">
+          <div class="chrome"><i></i><i></i><i></i><span>adssojesussalva-b03fa.web.app</span></div>
+          <img src="img/projetos/sojesussalva.webp" alt="Agenda de cultos do site Só Jesus Salva" width="1280" height="800" loading="lazy">
+          <figcaption><div><b>Só Jesus Salva</b><small>Angular · Spring Boot · Firebase</small></div><a class="visit" href="https://adssojesussalva-b03fa.web.app/" target="_blank" rel="noopener">Abrir ↗</a></figcaption>
+        </figure>
+      </div>
+      <div class="car-nav">
+        <div class="car-dots" id="car-dots"></div>
+        <div class="car-arrows">
+          <button type="button" id="car-prev" aria-label="Tela anterior">←</button>
+          <button type="button" id="car-next" aria-label="Próxima tela">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer id="contato">
   <div class="wrap">
     <div class="foot-grid">
@@ -732,7 +809,7 @@
 </div>
 
 <script>
-  /* Stack de cada projeto ao passar o mouse (ou tocar, no celular) */
+  /* Linguagens e tecnologias de cada projeto, sempre visíveis (vêm de data-langs / data-tech) */
   (function(){
     function split(v){ return (v || '').split(',').map(function(x){ return x.trim(); }).filter(Boolean); }
     function chip(text, cls){
@@ -742,43 +819,79 @@
       s.textContent = ai ? text.slice(1) : text;
       return s;
     }
-    function group(label, items, cls){
-      var g = document.createElement('div'); g.className = 'stack-group';
+    function row(label, items, cls){
+      var r = document.createElement('div'); r.className = 'stack-row';
       var l = document.createElement('div'); l.className = 'lbl'; l.textContent = label;
       var c = document.createElement('div'); c.className = 'chips';
       items.forEach(function(t){ c.appendChild(chip(t, cls)); });
-      g.appendChild(l); g.appendChild(c);
-      return g;
+      r.appendChild(l); r.appendChild(c);
+      return r;
     }
     document.querySelectorAll('[data-langs]').forEach(function(el){
       var langs = split(el.dataset.langs), tech = split(el.dataset.tech);
       if(el.classList.contains('other-item')){
-        var wrap = document.createElement('div'); wrap.className = 'mini-stack';
-        var inner = document.createElement('div');
-        langs.forEach(function(t){ inner.appendChild(chip(t, 'lang')); });
-        tech.forEach(function(t){ inner.appendChild(chip(t, 'chip')); });
-        wrap.appendChild(inner); el.appendChild(wrap);
-        el.tabIndex = 0;
+        var mini = document.createElement('div'); mini.className = 'mini-stack';
+        langs.forEach(function(t){ mini.appendChild(chip(t, 'lang')); });
+        tech.forEach(function(t){ mini.appendChild(chip(t, 'chip')); });
+        el.appendChild(mini);
         return;
       }
-      el.classList.add('has-stack');
-      el.tabIndex = 0;
-      var hintHost = el.querySelector('.proj-kind') || el.querySelector('.eyebrow');
-      if(hintHost){
-        var hint = document.createElement('div'); hint.className = 'stack-hint'; hint.style.marginTop = '6px';
-        hint.textContent = 'Passe o mouse para ver a stack';
-        hintHost.insertAdjacentElement('afterend', hint);
-      }
-      var panel = document.createElement('div'); panel.className = 'stack-reveal';
-      var h = document.createElement('h4');
-      h.textContent = (el.querySelector('h3') || {}).textContent || '';
-      panel.appendChild(h);
-      panel.appendChild(group('Linguagens', langs, 'lang'));
-      panel.appendChild(group('Tecnologias', tech, 'chip'));
-      var links = el.querySelector('.links');
-      if(links) panel.appendChild(links.cloneNode(true));
-      el.appendChild(panel);
+      var box = document.createElement('div'); box.className = 'stack-static';
+      box.appendChild(row('Linguagens', langs, 'lang'));
+      box.appendChild(row('Tecnologias', tech, 'chip'));
+      var tags = el.querySelector('.proj-tags');
+      if(tags){ tags.replaceWith(box); }
+      else { var links = el.querySelector('.links'); links ? el.insertBefore(box, links) : el.appendChild(box); }
     });
+  })();
+
+  /* Carrossel de telas dos projetos */
+  (function(){
+    var track = document.getElementById('car-track');
+    if(!track) return;
+    var slides = Array.prototype.slice.call(track.children);
+    var dots = document.getElementById('car-dots');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var current = 0, timer = null;
+
+    slides.forEach(function(_, i){
+      var b = document.createElement('button');
+      b.type = 'button'; b.setAttribute('aria-label', 'Ir para a tela ' + (i + 1));
+      b.addEventListener('click', function(){ go(i); });
+      dots.appendChild(b);
+    });
+
+    function go(i){
+      current = (i + slides.length) % slides.length;
+      var s = slides[current];
+      track.scrollTo({left: s.offsetLeft - track.offsetLeft, behavior: reduce ? 'auto' : 'smooth'});
+      mark();
+    }
+    function mark(){
+      Array.prototype.forEach.call(dots.children, function(d, i){ d.setAttribute('aria-current', String(i === current)); });
+    }
+    track.addEventListener('scroll', function(){
+      var pos = track.scrollLeft + track.offsetLeft, best = 0, dist = Infinity;
+      slides.forEach(function(s, i){
+        var d = Math.abs(s.offsetLeft - pos);
+        if(d < dist){ dist = d; best = i; }
+      });
+      if(track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) best = slides.length - 1;
+      if(best !== current){ current = best; mark(); }
+    }, {passive:true});
+    document.getElementById('car-prev').addEventListener('click', function(){ go(current - 1); });
+    document.getElementById('car-next').addEventListener('click', function(){ go(current + 1); });
+
+    function play(){ if(!reduce && !timer) timer = setInterval(function(){ go(current + 1); }, 5000); }
+    function stop(){ clearInterval(timer); timer = null; }
+    var car = track.parentNode;
+    car.addEventListener('mouseenter', stop); car.addEventListener('mouseleave', play);
+    car.addEventListener('focusin', stop); car.addEventListener('focusout', play);
+    track.addEventListener('touchstart', stop, {passive:true});
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ es[0].isIntersecting ? play() : stop(); }, {threshold:0.4}).observe(car);
+    }
+    mark();
   })();
 
   /* Chat "Pergunte sobre mim" — fala com /api/chat (a chave fica no servidor) */
