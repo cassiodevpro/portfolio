@@ -141,6 +141,7 @@
   /* ---------- Projects ---------- */
   .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);margin-top:28px;}
   .proj{background:var(--paper);padding:26px;display:flex;flex-direction:column;gap:12px;}
+  .proj.wide{grid-column:1 / -1;}
   .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
   .proj-top h3{font-size:1.5rem;text-transform:uppercase;line-height:1.05;}
   .proj-kind{font-family:var(--mono);font-size:0.68rem;color:var(--ink-soft);letter-spacing:0.04em;text-transform:uppercase;margin-top:4px;}
@@ -493,6 +494,16 @@
 
     <div class="proj-grid">
 
+      <div class="proj wide" data-langs="JavaScript, PowerShell" data-tech="Electron, Node.js, node-forge (PKCS#12), Certificados ICP-Brasil A1/A3, Keychain (macOS), Windows Cert Store, electron-builder, node:test, GitHub Actions, API REST da Global">
+        <div class="proj-top">
+          <div><h3>Global Navegador DEC</h3><div class="proj-kind">Navegador desktop para consulta e coleta de XML fiscal · Windows + macOS · cliente real</div></div>
+          <span class="status up" style="color:var(--blue);">v1.3.1</span>
+        </div>
+        <p class="desc">Navegador próprio para o DEC da SEFAZ-DF que abre vários certificados digitais ao mesmo tempo, cada um na sua aba com sessão isolada. Monta uma lista de buscas por certificado, período, tipo de nota (NF-e, NFC-e, CT-e, MDF-e) e papel; baixa os pacotes de XML organizados por CNPJ e mês e envia para o Global Admin sem duplicar. Também busca NFS-e no Ambiente de Dados Nacional, roda scripts no formato Tampermonkey e tem rotina diária automática. Os certificados ficam num cofre temporário apagado ao fechar o app, e nenhuma senha é gravada. A verificação de segurança do portal continua com quem usa.</p>
+        <div class="proj-tags"><span class="tag">Electron</span><span class="tag">Node.js</span><span class="tag">JavaScript</span><span class="tag">Certificado digital</span><span class="tag">NF-e · CT-e · NFS-e</span><span class="tag">Windows · macOS</span></div>
+        <div class="links"><span class="private">Código privado (cliente) · integrado ao Global Admin</span></div>
+      </div>
+
       <div class="proj" data-langs="Java, TypeScript, SQL" data-tech="Spring Boot 3.5, Spring Security, Flyway, Next.js 15, React Native, PostgreSQL, Docker, *DeepSeek">
         <div class="proj-top">
           <div><h3>Global Admin</h3><div class="proj-kind">Sistema para escritório de contabilidade · cliente real</div></div>
@@ -556,7 +567,7 @@
     </div>
 
     <div class="other-list">
-      <div class="other-item" data-langs="HTML, CSS, JavaScript" data-tech="Vercel, WhatsApp (link)">
+      <div class="other-item" data-langs="JavaScript" data-tech="Next.js, React, WhatsApp, Vercel">
         <h4>Convite de Aniversário</h4>
         <p>Convite digital com contagem regressiva, confirmação de presença pelo WhatsApp e lista de presentes. <a href="https://convite-aniversario-ebon-three.vercel.app/" target="_blank" rel="noopener">Ver ↗</a></p>
       </div>
@@ -687,6 +698,7 @@
     <button type="button">Qual a experiência dele com Java?</button>
     <button type="button">Ele já usou IA em produção?</button>
     <button type="button">Está disponível para vagas remotas?</button>
+    <button type="button">O que faz o Navegador DEC?</button>
   </div>
   <form class="chat-form" id="chat-form">
     <input id="chat-input" type="text" maxlength="600" placeholder="Escreva sua pergunta…" autocomplete="off" aria-label="Sua pergunta">

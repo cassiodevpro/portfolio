@@ -20,6 +20,24 @@ PERFIL
   limite de uso e controle de custo.
 - Outros: Node.js, TypeScript, PHP (Yii2), Telegram Bot API, Mercado Pago/PIX, Scrum, Kanban, Jira.
 
+RESUMO (do currículo)
+- Cerca de 2 anos de experiência profissional como Full Stack no desenvolvimento e manutenção de aplicações web com Angular, React,
+  Next.js, PHP (Yii2) e PostgreSQL, em times ágeis com Scrum (incluindo apoio como Trainee Scrum Master), integração de APIs REST e
+  interfaces responsivas. Portfólio próprio com projetos em produção na Vercel, Firebase e VPS.
+- Perfil colaborativo e de aprendizado rápido. Busca vagas de Desenvolvedor Full Stack ou Backend Java, ampliando a experiência com
+  Java e Spring Boot para entregar soluções escaláveis e de qualidade.
+- Linguagens: Java, PHP, JavaScript, TypeScript, SQL. Frameworks: Angular, React, Next.js, Spring Boot, Yii2.
+  Bancos: PostgreSQL, MySQL, SQLite. Cloud/deploy: Vercel, Railway, Firebase, Docker, VPS.
+  Ferramentas: Git, GitHub, Jira, Monday, Postman. Metodologias: Scrum e Kanban.
+- Disponível para trabalho remoto, híbrido ou presencial em Brasília-DF.
+
+CURSOS
+- Angular Web Development (Udemy, 2024); Angular Avançado com Projeto Real (Udemy, 2025); React + Next.js (Udemy, 2025);
+  Java com Spring Boot (Udemy, 2024); Java Completo com Spring (DIO/CI&T); Banco de Dados Relacional com SQL (Udemy, 2025);
+  Desafio de IA com NotebookLM (DIO, 2026); Versionamento com Git e GitHub (DIO, 2024);
+  Fundamentos de Atendimento e Tecnologia (IBM SkillsBuild, 2024);
+  Lógica de Programação, Java, Banco de Dados, Spring, HTML + Bootstrap e JavaScript (SENAI/DF).
+
 EXPERIÊNCIA
 - UITEC (Ui Tecnologia Desenvolvimento de Programas LTDA), Desenvolvedor Full Stack, set/2024 a jul/2026: Angular 15, React/Next.js e PHP (Yii2);
   manutenção de sistemas legados; APIs REST e PostgreSQL; componentes com Tailwind, Angular Material e Bootstrap; Trainee Scrum Master;
@@ -32,14 +50,27 @@ PROJETOS
 - Global Admin: sistema para escritório de contabilidade (cliente real): PDFs de faturamento, documentos por empresa, parcelamentos, verificação
   automática no e-CAC via SERPRO, login com certificado ICP-Brasil, e-mail e WhatsApp, bot no Telegram, assistente com IA e app Android de entregas.
   Spring Boot 3.5, Spring Security, Flyway, Next.js 15, React Native, PostgreSQL, DeepSeek. Código privado.
+- Global Navegador DEC (v1.3.1): app desktop para Windows e macOS, feito em Electron/Node.js (JavaScript), para consultar e coletar XMLs
+  de notas fiscais no DEC da SEFAZ-DF. Abre vários certificados digitais ao mesmo tempo (A1 e A3), cada um numa aba com sessão isolada;
+  lista de buscas por certificado, período, tipo (NF-e, NFC-e, CT-e, CT-e OS, MDF-e) e papel; baixa os pacotes por CNPJ e mês e envia ao
+  Global Admin sem duplicar; busca NFS-e no Ambiente de Dados Nacional; roda scripts no formato Tampermonkey; rotina diária automática.
+  Certificados ficam num cofre temporário (Keychain no Mac, repositório do Windows) apagado ao fechar; nenhuma senha é gravada.
+  Usa node-forge, electron-builder, testes com node:test e build no GitHub Actions. Não resolve a verificação de segurança do portal.
+  Código privado (cliente).
 - Banho & Tosa Adaca: agendamento para pet shop com lock pessimista contra horário duplicado, PIX, loja, mensagens e papéis de acesso.
   Java 17, Spring Boot, JWT, Next.js, React Native, Mercado Pago, Docker em VPS, Clean Architecture + DDD.
 - Job Hunter Agent: agente que busca vagas a cada 2 horas, calcula compatibilidade, gera currículo direcionado. Node.js, TypeScript, BullMQ,
   Prisma, Next.js, Jest.
 - Só Jesus Salva: site institucional de igreja. Angular no Firebase Hosting, backend Java/Spring Boot em VPS com Docker.
 - Facilito Smart (hub de automação varejista) e Hiragana Pro (guia de japonês): React/Next.js na Vercel.
-- Outros: convite de aniversário digital; TCC com Angular 15 + Spring Boot + MySQL; plataforma de psicologia com Angular, Next.js e PHP (Yii2);
-  automação de dados do ENEM em Python.
+- Convite de Aniversário Digital (convite-aniversario-ebon-three.vercel.app): convite personalizável em Next.js com contagem regressiva,
+  confirmação de presença pelo WhatsApp e lista de presentes.
+- Sistema de Integração (TCC): gestão de usuários com Angular 15, Spring Boot e MySQL; CRUD completo, autenticação e dashboard
+  com Angular Material.
+- Plataforma de Psicologia: Angular, Next.js e PHP (Yii2), integrando front moderno a backend legado.
+- Sistema de Agendamento Inteligente: projeto pessoal de agendamento de serviços com controle de conflito de horários e API própria.
+- Sistema de Currículos e APIs REST: APIs REST e autenticação para gestão de currículos e dados de usuários.
+- Automação de dados do ENEM em Python.
 - Monitor automático: GitHub Actions verifica os sites a cada 6 horas e abre alerta quando algum cai.
 
 CONTATO: cassiodevpro@gmail.com · LinkedIn linkedin.com/in/cassio-dev-pro · GitHub github.com/cassiodevpro
