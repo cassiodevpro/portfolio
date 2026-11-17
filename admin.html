@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Contatos do Chat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1EDE4;--paper-raised:#E7E0D0;--ink:#1C222B;--ink-soft:#565F70;
+    --blue:#2E5FC7;--orange:#BC5122;--green:#3F6B3A;--red:#B0322B;
+    --line:rgba(28,34,43,0.18);--line-strong:rgba(28,34,43,0.38);
+    --display:'Big Shoulders Display','Arial Narrow',sans-serif;
+    --body:'Archivo','Helvetica Neue',Arial,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#13161C;--paper-raised:#1A1E26;--ink:#ECE8DD;--ink-soft:#9FA6B5;
+      --blue:#729AFE;--orange:#E17E45;--green:#8AAE7C;--red:#EE7A70;
+      --line:rgba(236,232,221,0.16);--line-strong:rgba(236,232,221,0.34);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#13161C;--paper-raised:#1A1E26;--ink:#ECE8DD;--ink-soft:#9FA6B5;
+    --blue:#729AFE;--orange:#E17E45;--green:#8AAE7C;--red:#EE7A70;
+    --line:rgba(236,232,221,0.16);--line-strong:rgba(236,232,221,0.34);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+  h1,h2{font-family:var(--display);text-transform:uppercase;margin:0;line-height:1;}
+  .mono{font-family:var(--mono);}
+  .btn{font-family:var(--mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;padding:9px 14px;border:1px solid var(--ink);background:none;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+  .btn:hover{border-color:var(--blue);color:var(--blue);}
+  .btn.primary{background:var(--ink);color:var(--paper);}
+  .btn.primary:hover{background:var(--blue);border-color:var(--blue);color:#fff;}
+  .btn.danger{border-color:var(--red);color:var(--red);}
+  .btn.danger.armed{background:var(--red);color:#fff;}
+  .btn:disabled{opacity:0.5;cursor:wait;}
+
+  /* Login */
+  .login{min-height:100dvh;display:grid;place-items:center;padding:24px 16px;}
+  .login form{width:min(380px,100%);border:1px solid var(--ink);padding:28px;display:flex;flex-direction:column;gap:12px;background:var(--paper);}
+  .login h1{font-size:2rem;}
+  .login p{margin:0 0 6px;color:var(--ink-soft);font-size:0.9rem;}
+  label{font-family:var(--mono);font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px;}
+  input,select{font:inherit;font-size:0.95rem;color:var(--ink);background:var(--paper);border:1px solid var(--line-strong);padding:10px 12px;outline:none;text-transform:none;letter-spacing:0;}
+  input:focus,select:focus{border-color:var(--blue);}
+  .err{color:var(--red);font-size:0.85rem;min-height:1.2em;}
+
+  /* Painel */
+  .bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line-strong);}
+  .bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap;}
+  .bar h1{font-size:1.4rem;}
+  .bar .actions{display:flex;gap:8px;flex-wrap:wrap;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line-strong);margin:24px 0 18px;}
+  .stat{padding:14px 16px;border-right:1px solid var(--line);}
+  .stat:last-child{border-right:0;}
+  .stat b{display:block;font-family:var(--display);font-size:2rem;line-height:1;}
+  .stat span{font-family:var(--mono);font-size:0.64rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+  .filters button{font-family:var(--mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;border:1px solid var(--line-strong);background:none;color:var(--ink-soft);padding:6px 10px;cursor:pointer;}
+  .filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .filters input{flex:1;min-width:160px;font-size:0.85rem;padding:6px 10px;}
+  .lead{border:1px solid var(--line-strong);border-left:3px solid var(--orange);padding:16px 18px;margin-bottom:10px;display:grid;grid-template-columns:1fr auto;gap:8px 16px;}
+  .lead.retornado{border-left-color:var(--green);}
+  .lead.arquivado{border-left-color:var(--line-strong);opacity:0.75;}
+  .lead h2{font-size:1.35rem;}
+  .lead .meta{font-family:var(--mono);font-size:0.7rem;color:var(--ink-soft);margin-top:4px;}
+  .lead .contact{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;font-family:var(--mono);font-size:0.82rem;}
+  .lead .contact a{color:var(--blue);}
+  .lead .side{display:flex;flex-direction:column;gap:8px;align-items:flex-end;}
+  .lead select{font-family:var(--mono);font-size:0.74rem;padding:6px 8px;}
+  .lead details{grid-column:1 / -1;border-top:1px solid var(--line);padding-top:8px;}
+  .lead summary{cursor:pointer;font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);}
+  .turn{margin-top:10px;font-size:0.88rem;}
+  .turn .q{font-weight:600;}
+  .turn .a{color:var(--ink-soft);white-space:pre-wrap;}
+  .turn .t{font-family:var(--mono);font-size:0.62rem;color:var(--ink-soft);}
+  .empty{border:1px dashed var(--line-strong);padding:40px 16px;text-align:center;color:var(--ink-soft);}
+  .foot{padding:30px 0 50px;font-family:var(--mono);font-size:0.66rem;color:var(--ink-soft);}
+  [hidden]{display:none !important;}
+  @media (max-width:640px){
+    .wrap{padding:0 16px;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(2){border-right:0;}
+    .stat:nth-child(-n+2){border-bottom:1px solid var(--line);}
+    .lead{grid-template-columns:1fr;}
+    .lead .side{align-items:flex-start;flex-direction:row;flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+
+<section class="login" id="login-view" hidden>
+  <form id="login-form">
+    <div class="mono" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);">Área restrita</div>
+    <h1>Contatos do chat</h1>
+    <p>Entre para ver quem deixou contato no portfólio.</p>
+    <label>Usuário<input name="usuario" type="text" autocomplete="username" required></label>
+    <label>Senha<input name="senha" type="password" autocomplete="current-password" required></label>
+    <div class="err" id="login-err" role="alert"></div>
+    <button class="btn primary" type="submit" style="justify-content:center;">Entrar</button>
+    <a href="/" class="mono" style="font-size:0.7rem;color:var(--ink-soft);">← voltar ao portfólio</a>
+  </form>
+</section>
+
+<div id="app-view" hidden>
+  <div class="bar">
+    <div class="wrap">
+      <h1>Contatos do chat</h1>
+      <div class="actions">
+        <button class="btn" type="button" id="reload">Atualizar</button>
+        <button class="btn" type="button" id="export">Exportar CSV</button>
+        <button class="btn" type="button" id="logout">Sair</button>
+      </div>
+    </div>
+  </div>
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><b id="s-total">0</b><span>contatos</span></div>
+      <div class="stat"><b id="s-novo">0</b><span>aguardando retorno</span></div>
+      <div class="stat"><b id="s-ret">0</b><span>retornados</span></div>
+      <div class="stat"><b id="s-week">0</b><span>últimos 7 dias</span></div>
+    </div>
+    <div class="filters" id="filters">
+      <button type="button" data-f="novo" aria-pressed="true">Novos</button>
+      <button type="button" data-f="retornado" aria-pressed="false">Retornados</button>
+      <button type="button" data-f="arquivado" aria-pressed="false">Arquivados</button>
+      <button type="button" data-f="todos" aria-pressed="false">Todos</button>
+      <input type="search" id="q" placeholder="Buscar por nome, contato ou empresa" aria-label="Buscar">
+    </div>
+    <div id="list"></div>
+    <div class="foot" id="foot"></div>
+  </main>
+</div>
+
+<script>
+(function(){
+  var leads = [];
+  var filter = 'novo';
+  var $ = function(id){ return document.getElementById(id); };
+
+  function api(method, path, body){
+    return fetch(path, {
+      method: method,
+      headers: body ? {'Content-Type':'application/json'} : {},
+      body: body ? JSON.stringify(body) : undefined,
+      credentials: 'same-origin'
+    }).then(function(r){
+      return r.json().catch(function(){ return {}; }).then(function(d){ return {status:r.status, ok:r.ok, d:d}; });
+    });
+  }
+
+  function show(view){
+    $('login-view').hidden = view !== 'login';
+    $('app-view').hidden = view !== 'app';
+    if(view === 'login') document.querySelector('#login-form input').focus();
+  }
+
+  function fmt(iso){
+    try { return new Date(iso).toLocaleString('pt-BR', {dateStyle:'short', timeStyle:'short'}); } catch(e){ return iso; }
+  }
+
+  function contactLinks(c){
+    var wrap = document.createElement('div'); wrap.className = 'contact';
+    var txt = document.createElement('span'); txt.textContent = c; wrap.appendChild(txt);
+    var email = (c.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i) || [])[0];
+    var digits = c.replace(/\D/g, '');
+    if(email){
+      var a = document.createElement('a'); a.href = 'mailto:' + email + '?subject=' + encodeURIComponent('Contato pelo portfólio — Cássio Moreira'); a.textContent = 'Responder por e-mail ↗';
+      wrap.appendChild(a);
+    } else if(digits.length >= 10){
+      if(digits.length <= 11) digits = '55' + digits;
+      var w = document.createElement('a'); w.href = 'https://wa.me/' + digits; w.target = '_blank'; w.rel = 'noopener'; w.textContent = 'Chamar no WhatsApp ↗';
+      wrap.appendChild(w);
+    }
+    return wrap;
+  }
+
+  function render(){
+    var q = $('q').value.trim().toLowerCase();
+    var week = Date.now() - 7 * 864e5;
+    $('s-total').textContent = leads.length;
+    $('s-novo').textContent = leads.filter(function(l){ return l.status === 'novo'; }).length;
+    $('s-ret').textContent = leads.filter(function(l){ return l.status === 'retornado'; }).length;
+    $('s-week').textContent = leads.filter(function(l){ return new Date(l.criadoEm).getTime() > week; }).length;
+
+    var shown = leads.filter(function(l){
+      if(filter !== 'todos' && l.status !== filter) return false;
+      if(!q) return true;
+      return [l.nome, l.contato, l.empresa].join(' ').toLowerCase().indexOf(q) !== -1;
+    });
+
+    var list = $('list'); list.textContent = '';
+    if(!shown.length){
+      var e = document.createElement('div'); e.className = 'empty';
+      e.textContent = leads.length ? 'Nenhum contato neste filtro.' : 'Ainda ninguém deixou contato. Quando alguém preencher no chat, aparece aqui.';
+      list.appendChild(e);
+    }
+    shown.forEach(function(l){
+      var card = document.createElement('article'); card.className = 'lead ' + l.status;
+      var main = document.createElement('div');
+      var h = document.createElement('h2'); h.textContent = l.nome || 'Sem nome'; main.appendChild(h);
+      var meta = document.createElement('div'); meta.className = 'meta';
+      meta.textContent = fmt(l.criadoEm) + ' · ' + (l.origem || '') + (l.empresa ? ' · ' + l.empresa : '') + ' · ' + (l.conversa || []).length + ' pergunta(s)';
+      main.appendChild(meta);
+      main.appendChild(contactLinks(l.contato || ''));
+      card.appendChild(main);
+
+      var side = document.createElement('div'); side.className = 'side';
+      var sel = document.createElement('select'); sel.setAttribute('aria-label', 'Status');
+      [['novo','Aguardando retorno'],['retornado','Retornado'],['arquivado','Arquivado']].forEach(function(o){
+        var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1]; if(l.status === o[0]) op.selected = true; sel.appendChild(op);
+      });
+      sel.addEventListener('change', function(){
+        sel.disabled = true;
+        api('PATCH', '/api/admin/leads', {id:l.id, status:sel.value}).then(function(r){
+          if(r.status === 401) return show('login');
+          if(r.ok){ l.status = sel.value; render(); } else { sel.disabled = false; alertFoot(r.d.error); }
+        });
+      });
+      side.appendChild(sel);
+      var del = document.createElement('button'); del.type = 'button'; del.className = 'btn danger'; del.textContent = 'Apagar';
+      del.addEventListener('click', function(){
+        if(!del.classList.contains('armed')){
+          del.classList.add('armed'); del.textContent = 'Confirmar exclusão';
+          setTimeout(function(){ del.classList.remove('armed'); del.textContent = 'Apagar'; }, 4000);
+          return;
+        }
+        del.disabled = true;
+        api('DELETE', '/api/admin/leads', {id:l.id}).then(function(r){
+          if(r.status === 401) return show('login');
+          if(r.ok){ leads = leads.filter(function(x){ return x.id !== l.id; }); render(); } else { del.disabled = false; alertFoot(r.d.error); }
+        });
+      });
+      side.appendChild(del);
+      card.appendChild(side);
+
+      if((l.conversa || []).length){
+        var det = document.createElement('details');
+        var sum = document.createElement('summary'); sum.textContent = 'Ver o que perguntou à IA'; det.appendChild(sum);
+        l.conversa.forEach(function(t){
+          var turn = document.createElement('div'); turn.className = 'turn';
+          var tt = document.createElement('div'); tt.className = 't'; tt.textContent = fmt(t.em);
+          var qq = document.createElement('div'); qq.className = 'q'; qq.textContent = t.pergunta;
+          var aa = document.createElement('div'); aa.className = 'a'; aa.textContent = t.resposta;
+          turn.appendChild(tt); turn.appendChild(qq); turn.appendChild(aa);
+          det.appendChild(turn);
+        });
+        card.appendChild(det);
+      }
+      list.appendChild(card);
+    });
+  }
+
+  function alertFoot(msg){ $('foot').textContent = msg || 'Algo deu errado.'; }
+
+  function load(){
+    $('foot').textContent = 'Carregando…';
+    return api('GET', '/api/admin/leads').then(function(r){
+      if(r.status === 401){ show('login'); return; }
+      if(!r.ok){ show('app'); alertFoot(r.d.error); return; }
+      leads = r.d.leads || [];
+      show('app'); render();
+      $('foot').textContent = 'Atualizado ' + fmt(new Date().toISOString()) + ' · os contatos ficam num armazenamento privado da Vercel, fora do repositório.';
+    }).catch(function(){ show('login'); $('login-err').textContent = 'Sem conexão com o servidor.'; });
+  }
+
+  $('login-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = e.target, btn = f.querySelector('button');
+    btn.disabled = true; $('login-err').textContent = '';
+    api('POST', '/api/admin/login', {usuario:f.usuario.value, senha:f.senha.value}).then(function(r){
+      btn.disabled = false;
+      if(r.ok){ f.senha.value = ''; load(); }
+      else $('login-err').textContent = r.d.error || 'Não foi possível entrar.';
+    }).catch(function(){ btn.disabled = false; $('login-err').textContent = 'Sem conexão com o servidor.'; });
+  });
+
+  $('logout').addEventListener('click', function(){ api('DELETE', '/api/admin/login').then(function(){ leads = []; show('login'); }); });
+  $('reload').addEventListener('click', load);
+  $('q').addEventListener('input', render);
+  $('filters').addEventListener('click', function(e){
+    var b = e.target.closest('button[data-f]'); if(!b) return;
+    filter = b.dataset.f;
+    this.querySelectorAll('button[data-f]').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+    render();
+  });
+  $('export').addEventListener('click', function(){
+    var rows = [['data','nome','contato','empresa','status','origem','perguntas']];
+    leads.forEach(function(l){ rows.push([l.criadoEm, l.nome, l.contato, l.empresa, l.status, l.origem, (l.conversa || []).map(function(t){ return t.pergunta; }).join(' | ')]); });
+    var csv = rows.map(function(r){ return r.map(function(v){ return '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"'; }).join(';'); }).join('\n');
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(['﻿' + csv], {type:'text/csv;charset=utf-8'}));
+    a.download = 'contatos-portfolio.csv';
+    a.click();
+  });
+
+  load();
+})();
+</script>
+</body>
+</html>

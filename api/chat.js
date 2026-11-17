@@ -1,6 +1,7 @@
 // Função serverless da Vercel: POST /api/chat
 // A chave fica só no servidor, na variável de ambiente DEEPSEEK_API_KEY.
 // Nunca coloque a chave no index.html nem no repositório.
+import { sameOrigin, clientIp, limited, readLead, saveLead, newLeadId, leadToken, checkLeadToken, findContact } from './_lib.js';
 
 const PROFILE = `
 Você é o assistente do portfólio de Cássio Moreira de Souza. Responda perguntas de recrutadores e visitantes SOBRE O CÁSSIO,
@@ -76,29 +77,45 @@ PROJETOS
 CONTATO: cassiodevpro@gmail.com · LinkedIn linkedin.com/in/cassio-dev-pro · GitHub github.com/cassiodevpro
 `.trim();
 
+const ASK_CONTACT = `
+O VISITANTE AINDA NÃO DEIXOU CONTATO. Depois de responder, termine com uma frase curta convidando a deixar nome e e-mail ou WhatsApp
+aqui no chat para o Cássio retornar. Faça esse convite no máximo uma vez a cada duas respostas e nunca insista se ele recusar.`.trim();
+
+const HAS_CONTACT = `O visitante já deixou o contato; não peça de novo. Se ele perguntar, diga que o Cássio vai retornar em breve.`;
+
 const MAX_MESSAGES = 10;        // histórico enviado ao modelo
 const MAX_CHARS = 600;          // tamanho máximo de cada mensagem do visitante
 const LIMIT_PER_WINDOW = 15;    // perguntas por IP...
 const WINDOW_MS = 10 * 60_000;  // ...a cada 10 minutos
+const MAX_SAVED_TURNS = 60;     // perguntas guardadas por contato
 
-// Limite simples em memória (vale por instância da função; é uma proteção básica contra abuso).
-const hits = new Map();
-function rateLimited(ip) {
-  const now = Date.now();
-  const list = (hits.get(ip) || []).filter((t) => now - t < WINDOW_MS);
-  list.push(now);
-  hits.set(ip, list);
-  if (hits.size > 5000) hits.clear();
-  return list.length > LIMIT_PER_WINDOW;
-}
-
-function sameOrigin(req) {
-  const origin = req.headers.origin;
-  if (!origin) return true; // alguns navegadores omitem em requisições same-origin
+// Guarda a pergunta e a resposta no contato; cria o contato se o visitante digitou e-mail/WhatsApp na conversa.
+async function recordTurn(lead, question, reply) {
   try {
-    return new URL(origin).host === req.headers.host;
-  } catch {
-    return false;
+    if (lead && checkLeadToken(lead.id, lead.token)) {
+      const saved = await readLead(lead.id);
+      if (!saved) return null;
+      saved.conversa = [...(saved.conversa || []), { em: new Date().toISOString(), pergunta: question, resposta: reply }].slice(-MAX_SAVED_TURNS);
+      await saveLead(saved);
+      return null;
+    }
+    const contato = findContact(question);
+    if (!contato) return null;
+    const id = newLeadId();
+    await saveLead({
+      id,
+      nome: '',
+      contato,
+      empresa: '',
+      origem: 'digitado na conversa',
+      status: 'novo',
+      criadoEm: new Date().toISOString(),
+      conversa: [{ em: new Date().toISOString(), pergunta: question, resposta: reply }],
+    });
+    return { id, token: leadToken(id) };
+  } catch (err) {
+    console.error('recordTurn', err);
+    return null;
   }
 }
 
@@ -112,8 +129,7 @@ export default async function handler(req, res) {
   const key = process.env.DEEPSEEK_API_KEY;
   if (!key) return res.status(503).json({ error: 'O chat está desativado no momento.' });
 
-  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'anon';
-  if (rateLimited(ip)) {
+  if (limited(`chat:${clientIp(req)}`, LIMIT_PER_WINDOW, WINDOW_MS)) {
     return res.status(429).json({ error: 'Muitas perguntas seguidas. Tente de novo em alguns minutos.' });
   }
 
@@ -127,13 +143,16 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Envie uma pergunta.' });
   }
 
+  const lead = req.body?.lead && typeof req.body.lead === 'object' ? req.body.lead : null;
+  const hasLead = !!(lead && checkLeadToken(String(lead.id || ''), lead.token));
+
   try {
     const r = await fetch('https://api.deepseek.com/chat/completions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
       body: JSON.stringify({
         model: 'deepseek-chat',
-        messages: [{ role: 'system', content: PROFILE }, ...messages],
+        messages: [{ role: 'system', content: `${PROFILE}\n\n${hasLead ? HAS_CONTACT : ASK_CONTACT}` }, ...messages],
         max_tokens: 400,
         temperature: 0.4,
       }),
@@ -146,7 +165,8 @@ export default async function handler(req, res) {
     const data = await r.json();
     const reply = data?.choices?.[0]?.message?.content?.trim();
     if (!reply) return res.status(502).json({ error: 'Resposta vazia da IA.' });
-    return res.status(200).json({ reply });
+    const created = await recordTurn(hasLead ? lead : null, messages[messages.length - 1].content, reply);
+    return res.status(200).json(created ? { reply, lead: created } : { reply });
   } catch (err) {
     console.error('chat error', err);
     return res.status(504).json({ error: 'A IA demorou demais. Tente de novo.' });

@@ -250,6 +250,18 @@
   .chat-form input{flex:1;min-width:0;border:0;background:var(--paper);color:var(--ink);font:inherit;font-size:0.92rem;padding:14px 16px;outline:none;}
   .chat-form button{border:0;background:var(--orange);color:#fff;font-family:var(--mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;padding:0 16px;cursor:pointer;}
   .chat-form button:disabled{opacity:0.5;cursor:wait;}
+  .chat-suggest[hidden], .chat-form[hidden], .lead-form[hidden]{display:none;}
+  .lead-form{display:flex;flex-direction:column;gap:8px;border:1px solid var(--line-strong);background:var(--paper);padding:12px;}
+  .lead-form input{border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);font:inherit;font-size:0.88rem;padding:9px 11px;outline:none;}
+  .lead-form input:focus{border-color:var(--blue);}
+  .lead-form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+  .lead-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .lead-actions button{font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;padding:9px 12px;cursor:pointer;border:1px solid var(--orange);background:var(--orange);color:#fff;}
+  .lead-actions button.skip{background:none;border-color:transparent;color:var(--ink-soft);text-decoration:underline;padding:9px 4px;}
+  .lead-actions button:disabled{opacity:0.5;cursor:wait;}
+  .lead-err{font-size:0.78rem;color:var(--red);min-height:0;}
+  .lead-err:empty{display:none;}
+  .lead-legal{margin:0;font-family:var(--mono);font-size:0.6rem;color:var(--ink-soft);}
   .chat-note{font-family:var(--mono);font-size:0.6rem;color:var(--ink-soft);padding:6px 16px 10px;}
   @media (max-width:760px){
     .chat-fab{right:16px;bottom:16px;}
@@ -692,15 +704,27 @@
     <button class="chat-close" type="button" aria-label="Fechar chat">✕</button>
   </div>
   <div class="chat-log" id="chat-log" aria-live="polite">
-    <div class="msg bot">Olá! Sou um assistente de IA treinado com o portfólio do Cássio. Pergunte sobre experiência, stack, projetos ou disponibilidade.</div>
+    <div class="msg bot">Olá! Sou um assistente de IA treinado com o portfólio do Cássio. Antes de começar, deixe seu nome e um contato (e-mail ou WhatsApp) para o Cássio te retornar.</div>
+    <form class="lead-form" id="lead-form">
+      <input name="nome" type="text" maxlength="80" placeholder="Seu nome" autocomplete="name" required aria-label="Seu nome">
+      <input name="contato" type="text" maxlength="120" placeholder="E-mail ou WhatsApp com DDD" autocomplete="email" required aria-label="E-mail ou WhatsApp">
+      <input name="empresa" type="text" maxlength="120" placeholder="Empresa (opcional)" autocomplete="organization" aria-label="Empresa">
+      <input name="site" type="text" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+      <div class="lead-actions">
+        <button type="submit">Enviar contato</button>
+        <button type="button" class="skip" id="lead-skip">Prefiro só perguntar</button>
+      </div>
+      <div class="lead-err" id="lead-err" role="alert"></div>
+      <p class="lead-legal">Seus dados são usados só para o Cássio entrar em contato com você.</p>
+    </form>
   </div>
-  <div class="chat-suggest" id="chat-suggest">
+  <div class="chat-suggest" id="chat-suggest" hidden>
     <button type="button">Qual a experiência dele com Java?</button>
     <button type="button">Ele já usou IA em produção?</button>
     <button type="button">Está disponível para vagas remotas?</button>
     <button type="button">O que faz o Navegador DEC?</button>
   </div>
-  <form class="chat-form" id="chat-form">
+  <form class="chat-form" id="chat-form" hidden>
     <input id="chat-input" type="text" maxlength="600" placeholder="Escreva sua pergunta…" autocomplete="off" aria-label="Sua pergunta">
     <button type="submit">Enviar</button>
   </form>
@@ -766,10 +790,54 @@
     var input = document.getElementById('chat-input');
     var sendBtn = form.querySelector('button');
     var suggest = document.getElementById('chat-suggest');
+    var leadForm = document.getElementById('lead-form');
+    var leadErr = document.getElementById('lead-err');
     var history = [];
     var busy = false;
+    var lead = null;
 
-    function open(){ panel.classList.add('open'); fab.style.display = 'none'; input.focus(); }
+    function loadLead(){ try { return JSON.parse(localStorage.getItem('chatLead') || 'null'); } catch(e){ return null; } }
+    function storeLead(l){ lead = l; try { localStorage.setItem('chatLead', JSON.stringify(l)); } catch(e){} }
+    function startChat(msg){
+      leadForm.hidden = true;
+      if(msg) add(msg, 'bot');
+      suggest.hidden = false; form.hidden = false;
+      if(panel.classList.contains('open')) input.focus();
+    }
+
+    lead = loadLead();
+    if(lead && lead.id){ startChat('Bem-vindo de volta! Pode perguntar sobre experiência, stack, projetos ou disponibilidade.'); }
+
+    leadForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var fd = new FormData(leadForm);
+      var btn = leadForm.querySelector('button[type=submit]');
+      btn.disabled = true; leadErr.textContent = '';
+      fetch('/api/contato', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({nome:fd.get('nome'), contato:fd.get('contato'), empresa:fd.get('empresa'), site:fd.get('site')})
+      })
+        .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ return {ok:r.ok, d:d}; }); })
+        .then(function(res){
+          if(res.ok && res.d.id){
+            storeLead({id:res.d.id, token:res.d.token});
+            var nome = String(fd.get('nome') || '').trim().split(' ')[0];
+            startChat('Obrigado, ' + nome + '! O Cássio vai te retornar. Enquanto isso, pode me perguntar sobre experiência, stack, projetos ou disponibilidade.');
+          } else {
+            leadErr.textContent = res.d.error || 'Não consegui salvar agora. Tente de novo.';
+          }
+        })
+        .catch(function(){ leadErr.textContent = 'Sem conexão. Tente de novo.'; })
+        .then(function(){ btn.disabled = false; });
+    });
+    document.getElementById('lead-skip').addEventListener('click', function(){
+      startChat('Sem problema! Pode perguntar sobre experiência, stack, projetos ou disponibilidade.');
+    });
+
+    function open(){
+      panel.classList.add('open'); fab.style.display = 'none';
+      (leadForm.hidden ? input : leadForm.querySelector('input')).focus();
+    }
     function close(){ panel.classList.remove('open'); fab.style.display = ''; }
     document.querySelectorAll('[data-open-chat]').forEach(function(b){ b.addEventListener('click', open); });
     panel.querySelector('.chat-close').addEventListener('click', close);
@@ -794,7 +862,7 @@
       fetch('/api/chat', {
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({messages: history.slice(-10)})
+        body: JSON.stringify({messages: history.slice(-10), lead: lead})
       })
         .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ return {ok:r.ok, d:d}; }); })
         .then(function(res){
@@ -802,6 +870,7 @@
           if(res.ok && res.d.reply){
             add(res.d.reply, 'bot');
             history.push({role:'assistant', content:res.d.reply});
+            if(res.d.lead && !lead) storeLead(res.d.lead);
           } else {
             history.pop();
             add(res.d.error || 'Não consegui responder agora. Tente de novo.', 'bot err');
